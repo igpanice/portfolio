@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: SITE_NAME,
   description: SITE_DESCRIPTION,
+  authors: [{ name: "Igor Caramori", url: SITE_URL }],
+  creator: "Igor Caramori",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
