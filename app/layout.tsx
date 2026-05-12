@@ -11,7 +11,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 const SITE_URL = "https://igor-caramori.netlify.app";
 const SITE_NAME = "Igor Caramori — Product Designer";
 const SITE_DESCRIPTION =
-  "Portfolio de Igor Caramori, Product Designer baseado em Franca, São Paulo.";
+  "Crio experiências digitais que ajudam empresas a se conectarem melhor com seus usuários, sem desperdiçar recursos nem tomar decisões baseadas em achismos.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
