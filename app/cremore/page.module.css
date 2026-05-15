@@ -347,6 +347,16 @@
   }
 }
 
+/* ── Variantes desktop / mobile para os prints da galeria ──
+ * Renderizamos as 2 versões e alternamos via media query para
+ * fazer o swap apenas no breakpoint mobile (<520px). */
+.imgMobileOnly { display: none !important; }
+
+@media (max-width: 520px) {
+  .imgDesktopOnly { display: none !important; }
+  .imgMobileOnly { display: block !important; }
+}
+
 /* ── Mobile ── */
 @media (max-width: 520px) {
   .page {

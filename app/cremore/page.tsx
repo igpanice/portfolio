@@ -204,18 +204,20 @@ export default function CremorePage() {
       {/* ── Galeria visual de fechamento ── */}
       <div className={styles.gallery}>
 
-        {/* Fileira de 3 mobiles: produtos (2), processo (3), benefícios (4) */}
+        {/* Fileira de 3 mobiles.
+         * Desktop: produtos, processo, benefícios.
+         * Mobile: processo, quem somos, faq (rearranjo p/ destacar produtos/benefícios nos slots maiores). */}
         <div className={styles.phoneGrid}>
           <PhoneFrame>
             <Image
+              className={styles.imgDesktopOnly}
               src="/images/cremore/site-mobile-produtos.png"
               alt="Site Cremore mobile, produtos"
               width={390}
               height={844}
             />
-          </PhoneFrame>
-          <PhoneFrame>
             <Image
+              className={styles.imgMobileOnly}
               src="/images/cremore/site-mobile-processo.png"
               alt="Site Cremore mobile, processo"
               width={390}
@@ -224,8 +226,32 @@ export default function CremorePage() {
           </PhoneFrame>
           <PhoneFrame>
             <Image
+              className={styles.imgDesktopOnly}
+              src="/images/cremore/site-mobile-processo.png"
+              alt="Site Cremore mobile, processo"
+              width={390}
+              height={844}
+            />
+            <Image
+              className={styles.imgMobileOnly}
+              src="/images/cremore/site-mobile-quemsomos.png"
+              alt="Site Cremore mobile, quem somos"
+              width={390}
+              height={844}
+            />
+          </PhoneFrame>
+          <PhoneFrame>
+            <Image
+              className={styles.imgDesktopOnly}
               src="/images/cremore/site-mobile-beneficios.png"
               alt="Site Cremore mobile, benefícios"
+              width={390}
+              height={844}
+            />
+            <Image
+              className={styles.imgMobileOnly}
+              src="/images/cremore/site-mobile-faq.png"
+              alt="Site Cremore mobile, perguntas frequentes"
               width={390}
               height={844}
             />
@@ -245,8 +271,16 @@ export default function CremorePage() {
           <div className={styles.galleryPhone}>
             <PhoneFrame>
               <Image
+                className={styles.imgDesktopOnly}
                 src="/images/cremore/site-mobile-quemsomos.png"
                 alt="Site Cremore mobile, sobre nós"
+                width={390}
+                height={844}
+              />
+              <Image
+                className={styles.imgMobileOnly}
+                src="/images/cremore/site-mobile-produtos.png"
+                alt="Site Cremore mobile, produtos"
                 width={390}
                 height={844}
               />
@@ -267,8 +301,16 @@ export default function CremorePage() {
           <div className={styles.galleryPhone}>
             <PhoneFrame>
               <Image
+                className={styles.imgDesktopOnly}
                 src="/images/cremore/site-mobile-faq.png"
                 alt="Site Cremore mobile, FAQ"
+                width={390}
+                height={844}
+              />
+              <Image
+                className={styles.imgMobileOnly}
+                src="/images/cremore/site-mobile-beneficios.png"
+                alt="Site Cremore mobile, benefícios"
                 width={390}
                 height={844}
               />
