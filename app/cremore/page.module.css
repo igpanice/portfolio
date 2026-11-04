@@ -74,23 +74,28 @@
   opacity: 0.55;
 }
 
-/* ── Hero composition (browser + phone overlay) ──────────── */
+/* ── Hero composition (phone left + browser right, side by side) ──
+ * Cada mockup mantém sua proporção natural (sem corte/esticamento) —
+ * o browser fica no aspecto paisagem real de um desktop; o celular,
+ * mais alto, define a altura da linha. */
 .heroComp {
-  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
   margin: 0 0 96px;
 }
 
 .heroBrowser {
-  width: 100%;
+  order: 1;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .heroPhone {
-  position: absolute;
-  bottom: -50px;
-  right: 24px;
-  width: 26%;
-  max-width: 210px;
-  z-index: 2;
+  order: -1;
+  flex: 0 0 auto;
+  width: 32%;
+  max-width: 230px;
 }
 
 /* ── Case content (continuous text) ──────────────────────── */
@@ -120,6 +125,49 @@
   font-size: 16px;
   line-height: 1.75;
   color: var(--text);
+  margin: 0;
+}
+
+/* Espaçamento entre parágrafos empilhados (substitui <br/>) — mais
+ * compacto que a quebra dupla, mantendo a separação visual do ritmo. */
+.sectionText + .sectionText {
+  margin-top: 20px;
+}
+
+/* Seção isolada após a galeria (sem o gap de 64px do .content) */
+.sectionAfterGallery {
+  margin-bottom: 96px;
+}
+
+/* ── Métricas de destaque (Resultado) ──────────────────────
+ * Números grandes delimitados por filetes, sem cor nova: o peso
+ * visual vem da escala tipográfica, como no resto do site. */
+.statRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  margin: 24px 0;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.statValue {
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--text);
+  margin: 0 0 8px;
+}
+
+.statLabel {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0;
 }
 
 /* ── Processo blocks ── */
@@ -150,6 +198,160 @@
   line-height: 1.75;
   color: var(--text);
   text-wrap: pretty;
+}
+
+/* ── Faixa de metadados do bloco (método, participantes, objetivo) ──
+ * Mesmo vocabulário da faixa de meta do topo da página. */
+.blockMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  padding: 0 0 16px;
+  margin: 0 0 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.metaKey {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0 0 4px;
+}
+
+.metaValue {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--text);
+  margin: 0;
+}
+
+/* ── Par achado → decisão ────────────────────────────────── */
+.pairGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 16px;
+}
+
+.pairCell {
+  padding: 16px 18px;
+}
+
+.pairCell + .pairCell {
+  border-left: 1px solid var(--border);
+}
+
+.pairKey {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0 0 8px;
+}
+
+.pairValue {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* ── Tabela evidência → decisão (múltiplas linhas) ──────── */
+.pairTable {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 16px;
+}
+
+.pairTableHead {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+}
+
+.pairTableHead span {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  padding: 10px 16px;
+}
+
+.pairTableHead span + span {
+  border-left: 1px solid var(--border);
+}
+
+.pairRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.pairRow + .pairRow {
+  border-top: 1px solid var(--border);
+}
+
+.pairRowCell {
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.pairRowCell + .pairRowCell {
+  border-left: 1px solid var(--border);
+}
+
+.pairEvidence {
+  color: var(--text-secondary);
+}
+
+/* Lista compacta dentro de uma célula da tabela */
+.pairList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pairList li {
+  position: relative;
+  padding-left: 14px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.pairList li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.72em;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+  opacity: 0.55;
+}
+
+/* Espaçamento entre parágrafos e tabela dentro do bloco */
+.pairTable + .processBlockText {
+  margin-top: 16px;
+}
+
+.processBlockText + .processBlockText {
+  margin-top: 12px;
 }
 
 /* ── Bullets discretos (Resolvi) ── */
@@ -199,18 +401,25 @@
   margin: 0 auto;
 }
 
-/* Desktop print with mobile overlay (reuses heroComp pattern) */
+/* Desktop print + phone left, side by side (mesmo padrão do heroComp:
+ * proporção natural de cada mockup, sem corte/esticamento). */
 .galleryComp {
-  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.galleryComp > .browserFrame {
+  order: 1;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .galleryPhone {
-  position: absolute;
-  bottom: -50px;
-  right: 24px;
-  width: 26%;
-  max-width: 210px;
-  z-index: 2;
+  order: -1;
+  flex: 0 0 auto;
+  width: 32%;
+  max-width: 230px;
 }
 
 /* ── Browser frame mockup (Safari 18, monocromático) ────── */
@@ -325,15 +534,13 @@
   }
 
   .heroPhone {
-    width: 28%;
-    bottom: -36px;
-    right: 16px;
+    width: 34%;
+    max-width: 190px;
   }
 
   .galleryPhone {
-    width: 28%;
-    bottom: -36px;
-    right: 16px;
+    width: 34%;
+    max-width: 190px;
   }
 
   .content {
@@ -375,38 +582,80 @@
     margin-bottom: 40px;
   }
 
-  /* Hero comp: stack phone below browser, no overlap */
+  /* Hero comp: stack phone above browser, natural aspect (no crop) */
   .heroComp {
-    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
     margin-bottom: 56px;
   }
 
-  .heroPhone {
-    position: static;
-    width: 60%;
-    max-width: 220px;
+  .heroBrowser {
+    width: 100%;
   }
 
-  /* Gallery comp: stack phone below browser on mobile */
+  .heroPhone {
+    width: 66%;
+    max-width: 230px;
+  }
+
+  /* Gallery comp: stack phone above browser on mobile */
   .galleryComp {
-    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
+  }
+
+  .galleryComp > .browserFrame {
+    width: 100%;
   }
 
   .galleryPhone {
-    position: static;
-    width: 60%;
-    max-width: 220px;
+    width: 66%;
+    max-width: 230px;
   }
 
   .content {
     gap: 48px;
     margin-bottom: 56px;
+  }
+
+  .statRow {
+    gap: 28px 32px;
+  }
+
+  .statValue {
+    font-size: 28px;
+  }
+
+  /* Par achado → decisão empilha no mobile */
+  .pairGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .pairCell + .pairCell {
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Tabela vira lista empilhada: cabeçalho some, evidência acima da decisão */
+  .pairTableHead {
+    display: none;
+  }
+
+  .pairRow {
+    grid-template-columns: 1fr;
+    padding: 4px 0;
+  }
+
+  .pairRowCell + .pairRowCell {
+    border-left: none;
+    padding-top: 2px;
+  }
+
+  .pairEvidence {
+    padding-bottom: 2px;
+    font-size: 13px;
   }
 
   .gallery {

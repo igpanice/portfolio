@@ -65,7 +65,7 @@ export default function CremorePage() {
               src="/images/cremore/site-mobile-hero.png"
               alt="Site Cremore no mobile"
               width={390}
-              height={844}
+              height={950}
             />
           </PhoneFrame>
         </div>
@@ -90,6 +90,8 @@ export default function CremorePage() {
             <div className={styles.processBlock}>
               <p className={styles.processBlockLabel}>Investiguei</p>
               <p className={styles.processBlockText}>
+                Para encontrar a direção inicial e as oportunidades, usei
+                métodos de pesquisa generativa.{" "}
                 <ImageModalTrigger
                   label="Questionário"
                   src="/images/cremore/modals/pesquisa-v2.png"
@@ -99,15 +101,31 @@ export default function CremorePage() {
                   modalTitle="Pesquisa com revendedores"
                   mode="scroll"
                 />{" "}
-                com revendedores, entrevistas com donos e comercial, análise
-                de concorrentes online e nos comércios da minha região.
+                com revendedores, Canvas de Design Centrado no Usuário com os
+                donos e o comercial, análise de concorrentes online e nos
+                comércios da minha região.
               </p>
             </div>
             <div className={styles.processBlock}>
               <p className={styles.processBlockLabel}>Resolvi</p>
+
+              <div className={styles.blockMeta}>
+                <div>
+                  <p className={styles.metaKey}>Abordagem</p>
+                  <p className={styles.metaValue}>Mobile-first</p>
+                </div>
+                <div>
+                  <p className={styles.metaKey}>Base de decisão</p>
+                  <p className={styles.metaValue}>Pesquisa + Canvas</p>
+                </div>
+                <div>
+                  <p className={styles.metaKey}>Entregas</p>
+                  <p className={styles.metaValue}>Arquitetura, copy e UI kit</p>
+                </div>
+              </div>
+
               <p className={styles.processBlockText}>
-                Construí o site mobile-first e inteiramente voltado ao
-                revendedor ideal. A{" "}
+                Construí o site inteiramente voltado ao revendedor ideal, da{" "}
                 <ImageModalTrigger
                   label="ordem das seções"
                   src="/images/cremore/modals/arquitetura-v2.png"
@@ -117,86 +135,138 @@ export default function CremorePage() {
                   modalTitle="Arquitetura da informação"
                   mode="scroll"
                 />{" "}
-                veio dos percentuais da pesquisa e dos insights das entrevistas
-                com o comercial:
+                ao UI kit. Cada decisão veio dos percentuais da pesquisa ou da
+                reunião de Canvas com os donos e o comercial:
               </p>
-              <ul className={styles.bulletList}>
-                <li>
-                  Prova social antes do catálogo (qualidade e suporte são os
-                  atributos mais valorizados, e depoimentos reais provam isso
-                  mais rápido do que qualquer argumento).
-                </li>
-                <li>Produtos cedo na página (82% queriam ver).</li>
-                <li>Processo em passos (36% tinham insegurança).</li>
-                <li>Todos os CTAs direto no WhatsApp (100% usam o canal).</li>
-                <li>Copy com tom regional e imagens reais da fábrica.</li>
-              </ul>
+
+              <div className={styles.pairTable}>
+                <div className={styles.pairTableHead}>
+                  <span>Evidência</span>
+                  <span>O que virou no site</span>
+                </div>
+                <div className={styles.pairRow}>
+                  <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
+                    Qualidade e suporte são os atributos mais valorizados
+                  </p>
+                  <p className={styles.pairRowCell}>
+                    Prova social antes do catálogo
+                  </p>
+                </div>
+                <div className={styles.pairRow}>
+                  <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
+                    82% queriam ver os produtos
+                  </p>
+                  <p className={styles.pairRowCell}>
+                    Produtos cedo na página
+                  </p>
+                </div>
+                <div className={styles.pairRow}>
+                  <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
+                    36% tinham insegurança com o processo
+                  </p>
+                  <p className={styles.pairRowCell}>
+                    Processo quebrado em passos
+                  </p>
+                </div>
+                <div className={styles.pairRow}>
+                  <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
+                    100% usam o WhatsApp
+                  </p>
+                  <p className={styles.pairRowCell}>
+                    Todos os CTAs direto no WhatsApp
+                  </p>
+                </div>
+                <div className={styles.pairRow}>
+                  <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
+                    Reunião de Canvas com os donos e o comercial
+                  </p>
+                  <div className={styles.pairRowCell}>
+                    <ul className={styles.pairList}>
+                      <li>Tom da marca, copy regional e UI kit</li>
+                      <li>Perguntas do FAQ</li>
+                      <li>
+                        Imagens reais: a fábrica no Hero, os produtos e as
+                        lojas em Quem somos
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
               <p className={styles.processBlockText}>
                 Essa primeira versão é a melhor premissa possível.
               </p>
             </div>
             <div className={styles.processBlock}>
               <p className={styles.processBlockLabel}>Validei</p>
+
+              <div className={styles.blockMeta}>
+                <div>
+                  <p className={styles.metaKey}>Método</p>
+                  <p className={styles.metaValue}>Teste de 5 segundos</p>
+                </div>
+                <div>
+                  <p className={styles.metaKey}>Participantes</p>
+                  <p className={styles.metaValue}>4 donos de negócio</p>
+                </div>
+                <div>
+                  <p className={styles.metaKey}>Objetivo</p>
+                  <p className={styles.metaValue}>Clareza da proposta</p>
+                </div>
+              </div>
+
               <p className={styles.processBlockText}>
-                <ImageModalTrigger
-                  label="Design no Figma"
-                  src="/images/cremore/modals/figma.png"
-                  width={1940}
-                  height={920}
-                  alt="Tela do Figma com o design completo do site Cremore"
-                  modalTitle="Design no Figma"
-                />
-                , deploy via Claude Code no Netlify.{" "}
-                <ImageModalTrigger
-                  label="Lighthouse"
-                  src="/images/cremore/modals/lighthouse.png"
-                  width={705}
-                  height={573}
-                  alt="Relatório do Google Lighthouse para o site Cremore: mobile com 98 Performance, 97 Accessibility, 92 Best Practices, 100 SEO; desktop com 100 Performance, 97 Accessibility, 92 Best Practices, 100 SEO"
-                  modalTitle="Lighthouse"
-                  mode="static"
-                />{" "}
-                aprovado. Google Analytics configurado.
+                Padaria, restaurante delivery e e-commerce. Sem viabilidade
+                para teste de usabilidade por tarefas, queria saber o que
+                eles captavam do propósito do site, do que a empresa faz e da
+                proposta de valor da Cremore.
               </p>
+
+              <div className={styles.pairGrid}>
+                <div className={styles.pairCell}>
+                  <p className={styles.pairKey}>O que descobri</p>
+                  <p className={styles.pairValue}>
+                    Três dos quatro perguntaram em qual região a Cremore
+                    atua. A resposta existia apenas no FAQ.
+                  </p>
+                </div>
+                <div className={styles.pairCell}>
+                  <p className={styles.pairKey}>O que mudei</p>
+                  <p className={styles.pairValue}>
+                    Adicionei um mapa de Minas Gerais com destaque para
+                    Araxá, como primeira iteração.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Decisões sob risco</h2>
-          <p className={styles.sectionText}>
-            Apostei nas conclusões da pesquisa mesmo com amostra pequena, 23
-            de 500 revendedores. Compensei cruzando os dados com entrevistas
-            qualitativas com o comercial e os donos, e com análise de
-            concorrentes em Franca. A validação real só vem com o site no ar.
-          </p>
-          <br />
-          <p className={styles.sectionText}>
-            Mantive a margem de lucro no FAQ porque, além da pesquisa apontar
-            rentabilidade como a dúvida número um, o comercial também
-            confirmou. Apresentei os dados como variáveis por tipo de negócio
-            e com uma margem mais ampla para evitar problemas legais.
-          </p>
-          <br />
-          <p className={styles.sectionText}>
-            Escolhi não usar imagens geradas por IA. Todas as imagens do site,
-            incluindo as dos sabores dentro de mockups, são da operação real.
-            Autenticidade gera confiança.
-          </p>
-        </section>
-
-        <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Resultado</h2>
           <p className={styles.sectionText}>
-            Site recém lançado, tráfego pago ainda não ativado. Métricas
-            acompanhadas: taxa de conversão, CTR dos CTAs, scroll depth,
-            tempo de engajamento, origem do tráfego e leads confirmados
-            direto com o comercial.
+            Combinei com o comercial o registro de dois meses, para saber
+            quantos leads vieram do site e de fato viraram revendedores.
           </p>
-          <br />
+
+          <div className={styles.statRow}>
+            <div className={styles.stat}>
+              <p className={styles.statValue}>9</p>
+              <p className={styles.statLabel}>Novos revendedores</p>
+            </div>
+            <div className={styles.stat}>
+              <p className={styles.statValue}>5</p>
+              <p className={styles.statLabel}>Cidades alcançadas</p>
+            </div>
+            <div className={styles.stat}>
+              <p className={styles.statValue}>60</p>
+              <p className={styles.statLabel}>Dias de acompanhamento</p>
+            </div>
+          </div>
+
           <p className={styles.sectionText}>
-            O site entra em produção agora. A próxima fase é medir, testar
-            com usuários reais e iterar a partir dos dados.
+            Também acompanho conversão, CTR, scroll depth, tempo de
+            engajamento e origem do tráfego no Analytics.
           </p>
         </section>
       </div>
@@ -214,14 +284,14 @@ export default function CremorePage() {
               src="/images/cremore/site-mobile-produtos.png"
               alt="Site Cremore mobile, produtos"
               width={390}
-              height={844}
+              height={950}
             />
             <Image
               className={styles.imgMobileOnly}
               src="/images/cremore/site-mobile-processo.png"
               alt="Site Cremore mobile, processo"
               width={390}
-              height={844}
+              height={950}
             />
           </PhoneFrame>
           <PhoneFrame>
@@ -230,14 +300,14 @@ export default function CremorePage() {
               src="/images/cremore/site-mobile-processo.png"
               alt="Site Cremore mobile, processo"
               width={390}
-              height={844}
+              height={950}
             />
             <Image
               className={styles.imgMobileOnly}
               src="/images/cremore/site-mobile-quemsomos.png"
               alt="Site Cremore mobile, quem somos"
               width={390}
-              height={844}
+              height={950}
             />
           </PhoneFrame>
           <PhoneFrame>
@@ -246,14 +316,14 @@ export default function CremorePage() {
               src="/images/cremore/site-mobile-beneficios.png"
               alt="Site Cremore mobile, benefícios"
               width={390}
-              height={844}
+              height={950}
             />
             <Image
               className={styles.imgMobileOnly}
               src="/images/cremore/site-mobile-faq.png"
               alt="Site Cremore mobile, perguntas frequentes"
               width={390}
-              height={844}
+              height={950}
             />
           </PhoneFrame>
         </div>
@@ -265,7 +335,7 @@ export default function CremorePage() {
               src="/images/cremore/site-desktop-2-produtos.png"
               alt="Catálogo de produtos do site Cremore"
               width={1440}
-              height={1480}
+              height={1043}
             />
           </BrowserFrame>
           <div className={styles.galleryPhone}>
@@ -275,14 +345,14 @@ export default function CremorePage() {
                 src="/images/cremore/site-mobile-quemsomos.png"
                 alt="Site Cremore mobile, sobre nós"
                 width={390}
-                height={844}
+                height={950}
               />
               <Image
                 className={styles.imgMobileOnly}
                 src="/images/cremore/site-mobile-produtos.png"
                 alt="Site Cremore mobile, produtos"
                 width={390}
-                height={844}
+                height={950}
               />
             </PhoneFrame>
           </div>
@@ -305,20 +375,40 @@ export default function CremorePage() {
                 src="/images/cremore/site-mobile-faq.png"
                 alt="Site Cremore mobile, FAQ"
                 width={390}
-                height={844}
+                height={950}
               />
               <Image
                 className={styles.imgMobileOnly}
                 src="/images/cremore/site-mobile-beneficios.png"
                 alt="Site Cremore mobile, benefícios"
                 width={390}
-                height={844}
+                height={950}
               />
             </PhoneFrame>
           </div>
         </div>
 
       </div>
+
+      {/* ── Decisões sob risco (após os mockups finais) ── */}
+      <section className={`${styles.section} ${styles.sectionAfterGallery}`}>
+        <h2 className={styles.sectionTitle}>Decisões sob risco</h2>
+        <p className={styles.sectionText}>
+          Apostei nas conclusões da pesquisa mesmo com amostra pequena, 23 de
+          700 revendedores. Compensei cruzando os dados com o Canvas de
+          Design Centrado no Usuário com os donos e o comercial, e com a
+          análise de concorrentes em Franca.
+        </p>
+        <p className={styles.sectionText}>
+          O teste de 5 segundos também teve amostra baixa, quatro pessoas. O
+          sinal serve para orientar a primeira iteração, não para confirmar
+          um padrão de comportamento.
+        </p>
+        <p className={styles.sectionText}>
+          Sem viabilidade para um teste de usabilidade maior, a leitura do que
+          acontece no site depende do Analytics e do retorno do comercial.
+        </p>
+      </section>
 
       {/* ── Link externo ── */}
       <a

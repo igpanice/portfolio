@@ -23,6 +23,8 @@ type Mode =
   | "scroll" /* click-to-toggle fit ↔ 1.4x, scroll H/V (pesquisa, arquitetura) */
   | "pan"; /* pan + zoom interativo com botões (Figma) */
 
+type Lang = "pt" | "en";
+
 type Props = {
   label: ReactNode;
   src: string;
@@ -32,10 +34,44 @@ type Props = {
   modalTitle: string;
   /** Modo de visualização. Default: "pan" */
   mode?: Mode;
+  /** Idioma dos textos da UI (botões, aria-labels). Default: "pt" */
+  lang?: Lang;
 };
 
 const ANIM_OUT_MS = 150;
 const SCROLL_ZOOM_FACTOR = 1.4; /* "zoom" do modo scroll: 1.4x da resolução natural */
+
+const STRINGS: Record<Lang, {
+  openImage: (title: string) => string;
+  viewOriginal: string;
+  close: string;
+  zoomOut: string;
+  resetZoom: string;
+  zoomIn: string;
+  shrinkImage: string;
+  enlargeImage: string;
+}> = {
+  pt: {
+    openImage: (title) => `Abrir imagem: ${title}`,
+    viewOriginal: "Ver original",
+    close: "Fechar",
+    zoomOut: "Reduzir zoom",
+    resetZoom: "Resetar zoom",
+    zoomIn: "Aumentar zoom",
+    shrinkImage: "Reduzir imagem",
+    enlargeImage: "Ampliar imagem",
+  },
+  en: {
+    openImage: (title) => `Open image: ${title}`,
+    viewOriginal: "View original",
+    close: "Close",
+    zoomOut: "Zoom out",
+    resetZoom: "Reset zoom",
+    zoomIn: "Zoom in",
+    shrinkImage: "Shrink image",
+    enlargeImage: "Enlarge image",
+  },
+};
 
 function renderLabelWithArrow(label: ReactNode) {
   const arrow = (
@@ -74,15 +110,16 @@ function renderLabelWithArrow(label: ReactNode) {
   );
 }
 
-function ZoomControls() {
+function ZoomControls({ lang }: { lang: Lang }) {
   const { zoomIn, zoomOut, resetTransform } = useControls();
+  const t = STRINGS[lang];
   return (
     <div className={styles.zoomControls}>
       <button
         type="button"
         className={styles.zoomBtn}
         onClick={() => zoomOut()}
-        aria-label="Reduzir zoom"
+        aria-label={t.zoomOut}
       >
         −
       </button>
@@ -90,7 +127,7 @@ function ZoomControls() {
         type="button"
         className={styles.zoomBtn}
         onClick={() => resetTransform()}
-        aria-label="Resetar zoom"
+        aria-label={t.resetZoom}
       >
         ↺
       </button>
@@ -98,7 +135,7 @@ function ZoomControls() {
         type="button"
         className={styles.zoomBtn}
         onClick={() => zoomIn()}
-        aria-label="Aumentar zoom"
+        aria-label={t.zoomIn}
       >
         +
       </button>
@@ -114,7 +151,9 @@ export default function ImageModalTrigger({
   alt,
   modalTitle,
   mode = "pan",
+  lang = "pt",
 }: Props) {
+  const t = STRINGS[lang];
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -218,7 +257,7 @@ export default function ImageModalTrigger({
             setOpen(true);
           }
         }}
-        aria-label={`Abrir imagem: ${modalTitle}`}
+        aria-label={t.openImage(modalTitle)}
       >
         {renderLabelWithArrow(label)}
       </span>
@@ -248,7 +287,7 @@ export default function ImageModalTrigger({
                     rel="noopener noreferrer"
                     className={styles.original}
                   >
-                    Ver original
+                    {t.viewOriginal}
                     <span aria-hidden="true">↗</span>
                   </a>
                   <button
@@ -256,7 +295,7 @@ export default function ImageModalTrigger({
                     type="button"
                     className={styles.close}
                     onClick={close}
-                    aria-label="Fechar"
+                    aria-label={t.close}
                   >
                     ×
                   </button>
@@ -295,7 +334,7 @@ export default function ImageModalTrigger({
                         />
                       </div>
                     </TransformComponent>
-                    <ZoomControls />
+                    <ZoomControls lang={lang} />
                   </TransformWrapper>
                 </div>
               )}
@@ -313,7 +352,7 @@ export default function ImageModalTrigger({
                     }`}
                     onClick={onScrollZoomClick}
                     role="button"
-                    aria-label={scrollZoomed ? "Reduzir imagem" : "Ampliar imagem"}
+                    aria-label={scrollZoomed ? t.shrinkImage : t.enlargeImage}
                     tabIndex={0}
                     onKeyDown={(e) => {
                       if (e.key === "Enter" || e.key === " ") {
