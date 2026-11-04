@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Igor Caramori — Currículo</title>
+<title>Igor Caramori · Currículo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -32,7 +32,7 @@
     width: 210mm;
     min-height: 297mm;
     margin: 24px auto;
-    padding: 14mm 18mm;
+    padding: 10mm 18mm;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.08);
     font-size: 10pt;
     line-height: 1.45;
@@ -74,10 +74,10 @@
     gap: 16px;
     font-size: 9.5pt;
     color: var(--text-secondary);
-    padding: 10px 0;
+    padding: 8px 0;
     border-top: 1px solid var(--rule);
     border-bottom: 1px solid var(--rule);
-    margin: 0 0 18px;
+    margin: 0 0 14px;
   }
 
   .contact a {
@@ -111,7 +111,7 @@
   @media print { .download-btn { display: none !important; } }
 
   /* Seções */
-  section { margin: 0 0 18px; }
+  section { margin: 0 0 11px; }
 
   section h2 {
     font-size: 9pt;
@@ -134,20 +134,18 @@
 
   /* Item de experiência / formação */
   .item {
-    margin: 0 0 8px;
+    margin: 0 0 6px;
     page-break-inside: avoid;
     break-inside: avoid;
   }
 
   .item:last-child { margin-bottom: 0; }
 
-  .item-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-    margin: 0 0 4px;
-  }
+  /* Nota ATS: titulo, organizacao e periodo ficam no fluxo normal do texto.
+     O layout anterior em duas colunas (flex) fazia o extrator de texto do PDF
+     separar as datas do item e despeja-las depois da secao seguinte, deixando
+     a formacao sem data nenhuma para o ATS. */
+  .item-head { margin: 0 0 4px; }
 
   .item-title {
     font-size: 10.5pt;
@@ -163,13 +161,16 @@
     margin: 2px 0 0;
   }
 
-  .item-meta {
-    font-size: 9.5pt;
+  .item-period {
     color: var(--text-secondary);
-    white-space: nowrap;
-    flex-shrink: 0;
-    text-align: right;
-    margin: 1px 0 0;
+    font-weight: 400;
+  }
+
+  .item-sub {
+    font-size: 10pt;
+    font-weight: 600;
+    color: var(--text);
+    margin: 9px 0 0;
   }
 
   .item ul {
@@ -215,9 +216,13 @@
   }
 
   /* Print: A4, sem margens do navegador, sem sombras */
+  /* Nota impressao/ATS: as margens verticais vem do @page, nao do padding do
+     .page, para que TODAS as paginas tenham respiro no topo e no pe. Com
+     padding vertical no .page o curriculo de 2 paginas comecava a pagina 2
+     com o texto colado na borda superior do papel. */
   @page {
     size: A4;
-    margin: 0;
+    margin: 13mm 0;
   }
 
   @media print {
@@ -226,10 +231,17 @@
       box-shadow: none;
       margin: 0;
       width: 210mm;
-      min-height: 297mm;
-      padding: 14mm 18mm;
+      min-height: 0;
+      padding: 0 18mm;
     }
     a { color: var(--text-secondary); }
+
+    /* Nunca deixar um titulo de secao ou um cabecalho de item orfao no pe da pagina */
+    section h2,
+    .item-head {
+      break-after: avoid;
+      page-break-after: avoid;
+    }
   }
 </style>
 </head>
@@ -239,72 +251,83 @@
       <div class="header-top">
         <div>
           <h1>Igor Caramori</h1>
-          <p class="role">Product Designer</p>
-          <p class="location">Franca, São Paulo, Brasil</p>
+          <p class="role">Product Designer · UX/UI Designer</p>
+          <p class="location">Franca, São Paulo, Brasil · Disponível para remoto e híbrido</p>
         </div>
         <a href="/igor-caramori-cv.pdf" download class="download-btn">↓ Baixar PDF</a>
       </div>
       <div class="contact">
-        <a href="mailto:igorpanice@gmail.com">igorpanice@gmail.com</a>
+        <a href="mailto:igpanice@gmail.com">igpanice@gmail.com</a>
         <span>+55 16 98164-4143</span>
-        <a href="https://www.linkedin.com/in/igor-panicecaramori-b6baa8338" target="_blank" rel="noopener">linkedin.com/in/igor-panicecaramori-b6baa8338</a>
+        <a href="https://igor-caramori.netlify.app" target="_blank" rel="noopener">igor-caramori.netlify.app</a>
+        <a href="https://www.linkedin.com/in/igor-panice-caramori-b6baa8338" target="_blank" rel="noopener">linkedin.com/in/igor-panice-caramori-b6baa8338</a>
       </div>
     </header>
 
     <section>
-      <h2>Resumo</h2>
+      <h2>Resumo Profissional</h2>
       <p class="summary">
-        Designer com mais de 10 anos em projetos personalizados, hoje focado em produto digital. Trabalhando com pesquisa de usuários, prototipagem e validação para web e mobile.
+        Product Designer com 17 anos de experiência em design, hoje focado em produto digital. Conduzo discovery e pesquisa com usuários por meio de pesquisa de campo, questionário online, análise de dados, dentre outros métodos, traduzindo os achados em decisões de produto e de negócio. Desenho arquitetura da informação, fluxos, protótipos no Figma e interfaces responsivas, valido em testes de usabilidade. Acompanho o handoff e a implementação, com métricas definidas para medir o resultado.
       </p>
     </section>
 
     <section>
-      <h2>Experiência</h2>
+      <h2>Experiência Profissional</h2>
       <div class="item">
         <div class="item-head">
-          <div>
-            <p class="item-title">Designer de Produtos e Interiores</p>
-            <p class="item-org">Ecoart</p>
-          </div>
-          <span class="item-meta">Jan 2008 — Atual</span>
+          <p class="item-title">UX/UI Product Designer</p>
+          <p class="item-org">Freelancer <span class="item-period">· Jan 2025 - Atual</span></p>
         </div>
         <ul>
-          <li>Conduzo todo o processo de design, do briefing com o cliente à entrega final dos projetos personalizados.</li>
-          <li>Desenvolvo projetos com foco em pesquisa de necessidades, viabilidade técnica e estética alinhada ao usuário final.</li>
-          <li>Coordeno produção interna, montagem e instalação, garantindo que o resultado entregue corresponda ao projetado.</li>
-          <li>Mantenho relacionamento direto com fornecedores e parceiros.</li>
+          <li>Conduzo discovery e pesquisa com usuários por meio de questionários online, entrevistas em profundidade, pesquisa de campo e análise de concorrentes, e sintetizo os achados em requisitos e prioridades de produto.</li>
+          <li>Desenho arquitetura da informação, fluxos de usuário, wireframes e protótipos no Figma, estruturando componentes reutilizáveis com variantes, estilos de cor e tipografia e Auto Layout, e valido as soluções em testes de usabilidade antes da entrega.</li>
+          <li>Entrego interfaces responsivas mobile, acompanho o handoff e a implementação até a publicação para garantir fidelidade ao design.</li>
+        </ul>
+        <p class="item-sub">Projetos contratados na Cremore (2025 e 2026) · site no portfólio, pesquisas internas não publicáveis</p>
+        <ul>
+          <li>Site de captação de revendedores, definido com pesquisa e acompanhado com métricas no Google Analytics. Obtive o resultado de 9 novos revendedores em 5 cidades nos primeiros 60 dias, apurados junto ao time comercial.</li>
+          <li>Pesquisa de viabilidade de franquia: conduzi o estudo em campo e por questionário online com revendedores e levei as conclusões aos donos como subsídio para a decisão da marca sobre criar uma rede de franquias.</li>
+          <li>Pesquisa de demanda de aplicativo: pesquisa de campo com revendedores, combinando entrevistas com roteiro estruturado e estudo etnográfico da rotina de pedidos no próprio ponto de venda, para dimensionar o interesse em um app antes de qualquer investimento em produto.</li>
+          <li>Análise de dados para novos pontos de lojas de fábrica: cruzei o histórico de vendas, fluxo de trânsito e classe social por região e recomendei ao comercial os pontos com maior potencial em duas novas cidades.</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="item-head">
+          <p class="item-title">Designer de Produtos e Interiores</p>
+          <p class="item-org">Ecoart <span class="item-period">· Jan 2008 - Jan 2025</span></p>
+        </div>
+        <ul>
+          <li>Conduzi o processo de design de ponta a ponta, do levantamento de requisitos com o cliente à entrega final dos projetos personalizados.</li>
+          <li>Traduzi necessidades em soluções viáveis, equilibrando pesquisa de uso, restrições técnicas de produção e estética alinhada ao usuário final.</li>
+          <li>Apresentei e defendi decisões de projeto diretamente com clientes e stakeholders ao longo de todo o desenvolvimento.</li>
+          <li>Coordenei produção interna, montagem e instalação em colaboração com equipes multidisciplinares e fornecedores, garantindo fidelidade entre o projetado e o entregue.</li>
         </ul>
       </div>
     </section>
 
     <section>
-      <h2>Formação e certificações</h2>
+      <h2>Formação Acadêmica</h2>
       <div class="item">
         <div class="item-head">
-          <div>
-            <p class="item-title">Professional Certificate in UX Design</p>
-            <p class="item-org">UX Design Institute</p>
-          </div>
-          <span class="item-meta">Ago 2025 · 180h</span>
+          <p class="item-title">Bacharelado em Design de Produto</p>
+          <p class="item-org">Universidade de Franca <span class="item-period">· Fev 2008 - Dez 2012</span></p>
         </div>
       </div>
+    </section>
+
+    <section>
+      <h2>Cursos e Certificações</h2>
       <div class="item">
         <div class="item-head">
-          <div>
-            <p class="item-title">Certificado em UX Design</p>
-            <p class="item-org">ESPM</p>
-          </div>
-          <span class="item-meta">Ago 2025 · 180h</span>
+          <p class="item-title">Professional Certificate in UX Design</p>
+          <p class="item-org">UX Design Institute e ESPM <span class="item-period">· Ago 2025 · 130h</span></p>
         </div>
-      </div>
-      <div class="item">
-        <div class="item-head">
-          <div>
-            <p class="item-title">Bacharelado em Design de Produto</p>
-            <p class="item-org">Universidade de Franca</p>
-          </div>
-          <span class="item-meta">Fev 2008 — Dez 2012</span>
-        </div>
+        <ul>
+          <li>Programa de 10 módulos com dupla certificação: Professional Certificate in UX Design (UX Design Institute) e Certificado em UX Design (ESPM).</li>
+          <li>Pesquisa: entrevistas em profundidade e com stakeholders, testes de usabilidade moderados presenciais e remotos, card sorting, teste A/B, benchmarking competitivo e heurísticas de usabilidade.</li>
+          <li>Análise e síntese: triangulação de dados, diagrama de afinidade, mapa da jornada do cliente, personas e mapa de empatia.</li>
+          <li>Design: arquitetura da informação, fluxos de usuário, design de interação e microinterações, princípios e padrões de design, UX mobile e prototipagem com documentação para desenvolvimento.</li>
+        </ul>
       </div>
     </section>
 
@@ -312,14 +335,25 @@
       <h2>Competências</h2>
       <ul class="inline-list">
         <li>Pesquisa com usuários</li>
-        <li>Arquitetura da informação</li>
-        <li>Wireframing e prototipagem</li>
-        <li>Design de interação</li>
-        <li>UI Design</li>
+        <li>Discovery</li>
+        <li>Entrevistas com usuários</li>
+        <li>Pesquisa quantitativa e qualitativa</li>
+        <li>Pesquisa de campo e estudo etnográfico</li>
         <li>Testes de usabilidade</li>
+        <li>Arquitetura da informação</li>
+        <li>Fluxos de usuário</li>
+        <li>Wireframing e prototipagem</li>
+        <li>UI Design</li>
+        <li>Design de interação</li>
+        <li>Design System</li>
+        <li>Design responsivo e mobile-first</li>
+        <li>Métricas de produto e análise de dados</li>
         <li>Mapeamento da jornada do usuário</li>
+        <li>Benchmark e análise de concorrentes</li>
         <li>Design Thinking</li>
-        <li>Design responsivo</li>
+        <li>Handoff e acompanhamento da implementação</li>
+        <li>Colaboração multidisciplinar</li>
+        <li>Prototipagem assistida por IA</li>
       </ul>
     </section>
 
@@ -327,18 +361,24 @@
       <h2>Ferramentas</h2>
       <ul class="inline-list">
         <li>Figma</li>
-        <li>Illustrator</li>
-        <li>CorelDraw</li>
-        <li>Photoshop</li>
+        <li>Figma Make</li>
+        <li>Google Analytics</li>
+        <li>Lighthouse</li>
+        <li>Claude Code</li>
         <li>Claude</li>
+        <li>v0</li>
+        <li>Google Stitch</li>
+        <li>Illustrator</li>
+        <li>Photoshop</li>
+        <li>CorelDraw</li>
       </ul>
     </section>
 
     <section>
       <h2>Idiomas</h2>
       <ul class="inline-list">
-        <li>Português — Nativo</li>
-        <li>Inglês — Avançado</li>
+        <li>Português (nativo)</li>
+        <li>Inglês (avançado)</li>
       </ul>
     </section>
   </div>
