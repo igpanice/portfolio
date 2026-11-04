@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Igor Caramori · Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --text: #262626;
+    --text-secondary: #5C5C5C;
+    --rule: #D4D4D4;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #F2F2F0;
+    color: var(--text);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* A4 "paper" page for browser viewing */
+  .page {
+    background: #FFFFFF;
+    width: 210mm;
+    min-height: 297mm;
+    margin: 24px auto;
+    padding: 10mm 18mm;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.08);
+    font-size: 10pt;
+    line-height: 1.45;
+  }
+
+  /* Header */
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  header h1 {
+    font-size: 24pt;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 4px;
+    color: var(--text);
+  }
+
+  header .role {
+    font-size: 11.5pt;
+    font-weight: 500;
+    color: var(--text);
+    margin: 0 0 4px;
+  }
+
+  header .location {
+    font-size: 10pt;
+    color: var(--text-secondary);
+    margin: 0 0 14px;
+  }
+
+  /* Contact line */
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 9.5pt;
+    color: var(--text-secondary);
+    padding: 8px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin: 0 0 14px;
+  }
+
+  .contact a {
+    color: var(--text-secondary);
+    text-decoration: none;
+  }
+
+  .contact a:hover { text-decoration: underline; }
+
+  /* Download button */
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 9pt;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 5px 10px;
+    transition: color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .download-btn:hover {
+    color: var(--text);
+    border-color: #B0B0B0;
+  }
+  @media print { .download-btn { display: none !important; } }
+
+  /* Sections */
+  section { margin: 0 0 11px; }
+
+  section h2 {
+    font-size: 9pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text);
+    margin: 0 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* Summary */
+  .summary {
+    margin: 0;
+    color: var(--text);
+    font-size: 10.5pt;
+    line-height: 1.6;
+  }
+
+  /* Experience / education item */
+  .item {
+    margin: 0 0 6px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .item:last-child { margin-bottom: 0; }
+
+  /* Nota ATS: titulo, organizacao e periodo ficam no fluxo normal do texto.
+     O layout anterior em duas colunas (flex) fazia o extrator de texto do PDF
+     separar as datas do item e despeja-las depois da secao seguinte, deixando
+     a formacao sem data nenhuma para o ATS. */
+  .item-head { margin: 0 0 4px; }
+
+  .item-title {
+    font-size: 10.5pt;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+  }
+
+  .item-org {
+    font-size: 10pt;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin: 2px 0 0;
+  }
+
+  .item-period {
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+
+  .item-sub {
+    font-size: 10pt;
+    font-weight: 600;
+    color: var(--text);
+    margin: 9px 0 0;
+  }
+
+  .item ul {
+    margin: 6px 0 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .item li {
+    position: relative;
+    padding-left: 14px;
+    margin: 0 0 4px;
+    color: var(--text);
+  }
+
+  .item li::before {
+    content: "·";
+    position: absolute;
+    left: 4px;
+    top: -1px;
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+
+  /* Inline lists (skills, tools, languages) */
+  .inline-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 0;
+  }
+
+  .inline-list li {
+    color: var(--text);
+  }
+
+  .inline-list li:not(:last-child)::after {
+    content: " · ";
+    color: var(--text-secondary);
+    margin: 0 6px;
+  }
+
+  /* Print: A4, no browser margins, no shadows */
+  /* Nota impressao/ATS: as margens verticais vem do @page, nao do padding do
+     .page, para que TODAS as paginas tenham respiro no topo e no pe. Com
+     padding vertical no .page o curriculo de 2 paginas comecava a pagina 2
+     com o texto colado na borda superior do papel. */
+  @page {
+    size: A4;
+    margin: 13mm 0;
+  }
+
+  @media print {
+    html, body { background: #FFFFFF; }
+    .page {
+      box-shadow: none;
+      margin: 0;
+      width: 210mm;
+      min-height: 0;
+      padding: 0 18mm;
+    }
+    a { color: var(--text-secondary); }
+
+    /* Nunca deixar um titulo de secao ou um cabecalho de item orfao no pe da pagina */
+    section h2,
+    .item-head {
+      break-after: avoid;
+      page-break-after: avoid;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="header-top">
+        <div>
+          <h1>Igor Caramori</h1>
+          <p class="role">Product Designer · UX/UI Designer</p>
+          <p class="location">Franca, São Paulo, Brazil · Open to remote and hybrid</p>
+        </div>
+        <a href="/igor-caramori-cv-en.pdf" download class="download-btn">↓ Download PDF</a>
+      </div>
+      <div class="contact">
+        <a href="mailto:igpanice@gmail.com">igpanice@gmail.com</a>
+        <span>+55 16 98164-4143</span>
+        <a href="https://igor-caramori.netlify.app/en" target="_blank" rel="noopener">igor-caramori.netlify.app/en</a>
+        <a href="https://www.linkedin.com/in/igor-panice-caramori-b6baa8338" target="_blank" rel="noopener">linkedin.com/in/igor-panice-caramori-b6baa8338</a>
+      </div>
+    </header>
+
+    <section>
+      <h2>Professional Summary</h2>
+      <p class="summary">
+        Product Designer with 17 years of design experience, now focused on digital product. I run discovery and user research through field research, online surveys, data analysis and other methods, turning the findings into product and business decisions. I design information architecture, flows, Figma prototypes and responsive interfaces, and validate them in usability testing. I follow handoff and implementation through, with metrics defined to measure the outcome.
+      </p>
+    </section>
+
+    <section>
+      <h2>Professional Experience</h2>
+      <div class="item">
+        <div class="item-head">
+          <p class="item-title">UX/UI Product Designer</p>
+          <p class="item-org">Freelance <span class="item-period">· Jan 2025 - Present</span></p>
+        </div>
+        <ul>
+          <li>Run discovery and user research through online surveys, in-depth interviews, field research and competitor analysis, and synthesise the findings into product requirements and priorities.</li>
+          <li>Design information architecture, user flows, wireframes and Figma prototypes, structuring reusable components with variants, colour and type styles and Auto Layout, and validate solutions in usability testing before delivery.</li>
+          <li>Ship responsive mobile interfaces, follow handoff and implementation through to launch to keep the build faithful to the design.</li>
+        </ul>
+        <p class="item-sub">Contracted projects at Cremore (2025 and 2026) · site in the portfolio, research internal and not shareable</p>
+        <ul>
+          <li>Reseller acquisition site, defined through research and tracked with metrics in Google Analytics. The outcome: 9 new resellers across 5 cities in the first 60 days, confirmed with the sales team.</li>
+          <li>Franchise feasibility research: ran the study in the field and through an online survey with resellers and took the conclusions to the owners as input for the brand's decision on building a franchise network.</li>
+          <li>App demand research: field research with resellers, combining structured-script interviews with an ethnographic study of their ordering routine at the point of sale, to size the appetite for an app before any product investment.</li>
+          <li>Data analysis for new factory-outlet locations: cross-referenced sales history, traffic flow and social class by region and recommended the locations with the highest potential to the sales team in two new cities.</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="item-head">
+          <p class="item-title">Product &amp; Interior Designer</p>
+          <p class="item-org">Ecoart <span class="item-period">· Jan 2008 - Jan 2025</span></p>
+        </div>
+        <ul>
+          <li>Led the design process end to end, from requirements gathering with the client to final delivery of custom projects.</li>
+          <li>Turned needs into viable solutions, balancing use research, technical production constraints and an aesthetic that fit the end user.</li>
+          <li>Presented and defended design decisions directly with clients and stakeholders throughout development.</li>
+          <li>Coordinated in-house production, assembly and installation with cross-functional teams and suppliers, making sure what shipped matched what was designed.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <div class="item">
+        <div class="item-head">
+          <p class="item-title">Bachelor's in Product Design</p>
+          <p class="item-org">Universidade de Franca <span class="item-period">· Feb 2008 - Dec 2012</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Courses and Certifications</h2>
+      <div class="item">
+        <div class="item-head">
+          <p class="item-title">Professional Certificate in UX Design</p>
+          <p class="item-org">UX Design Institute and ESPM <span class="item-period">· Aug 2025 · 130h</span></p>
+        </div>
+        <ul>
+          <li>A 10-module programme with dual certification: Professional Certificate in UX Design (UX Design Institute) and UX Design Certificate (ESPM).</li>
+          <li>Research: in-depth and stakeholder interviews, moderated usability testing in person and remotely, card sorting, A/B testing, competitive benchmarking and usability heuristics.</li>
+          <li>Analysis and synthesis: data triangulation, affinity diagramming, customer journey mapping, personas and empathy maps.</li>
+          <li>Design: information architecture, user flows, interaction design and microinteractions, design principles and patterns, mobile UX, and prototyping with documentation for development.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <ul class="inline-list">
+        <li>User research</li>
+        <li>Discovery</li>
+        <li>User interviews</li>
+        <li>Qualitative and quantitative research</li>
+        <li>Field research and ethnographic study</li>
+        <li>Usability testing</li>
+        <li>Information architecture</li>
+        <li>User flows</li>
+        <li>Wireframing and prototyping</li>
+        <li>UI Design</li>
+        <li>Interaction design</li>
+        <li>Design System</li>
+        <li>Responsive and mobile-first design</li>
+        <li>Product metrics and data analysis</li>
+        <li>User journey mapping</li>
+        <li>Benchmarking and competitor analysis</li>
+        <li>Design Thinking</li>
+        <li>Handoff and implementation support</li>
+        <li>Cross-functional collaboration</li>
+        <li>AI-assisted prototyping</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Tools</h2>
+      <ul class="inline-list">
+        <li>Figma</li>
+        <li>Figma Make</li>
+        <li>Google Analytics</li>
+        <li>Lighthouse</li>
+        <li>Claude Code</li>
+        <li>Claude</li>
+        <li>v0</li>
+        <li>Google Stitch</li>
+        <li>Illustrator</li>
+        <li>Photoshop</li>
+        <li>CorelDraw</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Languages</h2>
+      <ul class="inline-list">
+        <li>Portuguese (native)</li>
+        <li>English (advanced)</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>
