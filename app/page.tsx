@@ -13,25 +13,26 @@ export default function Home() {
           <p className={styles.bio}>
             Crio experiências digitais que ajudam empresas a se conectarem
             melhor com seus usuários, sem desperdiçar recursos nem tomar
-            decisões baseadas em achismos.
+            decisões que não sejam baseadas em dados.
           </p>
           <p className={styles.bio}>
-            Sou designer de produto físico com mais de 10 anos de experiência
-            em projetos personalizados, atuando diretamente com clientes e
-            empresas regionais. Hoje focado em produto digital.
+            Product Designer focado em produto digital desde 2025. Conduzo
+            discovery e pesquisa com usuários, desenho fluxos e interfaces no
+            Figma, valido em testes de usabilidade e acompanho a
+            implementação, com métricas definidas para medir o resultado.
           </p>
 
           <nav className={styles.links} aria-label="Contato">
             <a
-              href="mailto:igorpanice@gmail.com"
+              href="mailto:igpanice@gmail.com"
               className={styles.link}
               aria-label="Enviar e-mail para Igor Caramori"
             >
-              igorpanice@gmail.com
+              igpanice@gmail.com
               <span className={styles.linkArrow} aria-hidden="true">↗</span>
             </a>
             <a
-              href="https://www.linkedin.com/in/igor-panicecaramori-b6baa8338"
+              href="https://www.linkedin.com/in/igor-panice-caramori-b6baa8338"
               className={styles.link}
               target="_blank"
               rel="noopener noreferrer"
@@ -51,6 +52,14 @@ export default function Home() {
               <span className={styles.linkArrow} aria-hidden="true">↗</span>
             </a>
           </nav>
+
+          <Link
+            href="/en"
+            className={styles.langSwitch}
+            aria-label="Switch to English"
+          >
+            EN
+          </Link>
         </div>
       </aside>
 
@@ -60,7 +69,10 @@ export default function Home() {
         <div className={styles.grid}>
           {/* Card — Cremore */}
           <Link href="/cremore" className={styles.card}>
-            <p className={styles.cardTitle}>Cremore</p>
+            <p className={styles.cardTitle}>
+              Cremore
+              <span className={styles.cardArrow} aria-hidden="true">→</span>
+            </p>
             <div className={styles.cardImage}>
               <Image
                 src="/images/cremore/hero.webp"

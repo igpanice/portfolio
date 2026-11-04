@@ -10,8 +10,9 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 const SITE_URL = "https://igor-caramori.netlify.app";
 const SITE_NAME = "Igor Caramori — Product Designer";
+const OG_TITLE = "Trabalhos selecionados";
 const SITE_DESCRIPTION =
-  "Crio experiências digitais que ajudam empresas a se conectarem melhor com seus usuários, sem desperdiçar recursos nem tomar decisões baseadas em achismos.";
+  "Crio experiências digitais que ajudam empresas a se conectarem melhor com seus usuários, sem desperdiçar recursos nem tomar decisões que não sejam baseadas em dados.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -24,13 +25,12 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     url: SITE_URL,
-    siteName: SITE_NAME,
-    title: SITE_NAME,
+    title: OG_TITLE,
     description: SITE_DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
-    title: SITE_NAME,
+    title: OG_TITLE,
     description: SITE_DESCRIPTION,
   },
   robots: {
@@ -44,7 +44,7 @@ const personSchema = {
   "@type": "Person",
   name: "Igor Caramori",
   jobTitle: "Product Designer",
-  email: "mailto:igorpanice@gmail.com",
+  email: "mailto:igpanice@gmail.com",
   url: SITE_URL,
   address: {
     "@type": "PostalAddress",
@@ -53,7 +53,7 @@ const personSchema = {
     addressCountry: "BR",
   },
   sameAs: [
-    "https://www.linkedin.com/in/igor-panicecaramori-b6baa8338",
+    "https://www.linkedin.com/in/igor-panice-caramori-b6baa8338",
   ],
 };
 

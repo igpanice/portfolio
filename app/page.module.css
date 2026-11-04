@@ -68,6 +68,28 @@
   flex-shrink: 0;
 }
 
+/* ── Language switch ── */
+.langSwitch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin-top: 24px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.langSwitch:hover {
+  color: var(--text);
+  border-color: var(--text-secondary);
+}
+
 /* ── Right content ── */
 .content {
   flex: 1;
@@ -101,19 +123,31 @@
   display: block;
   text-decoration: none;
   color: inherit;
-  transition: opacity 0.15s ease;
-}
-
-.card:hover {
-  opacity: 0.75;
 }
 
 .cardTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 15px;
   font-weight: 500;
   letter-spacing: -0.01em;
   color: var(--text);
   margin-bottom: 12px;
+}
+
+/* Seta de navegação — sutil em repouso, desliza e ganha presença no hover */
+.cardArrow {
+  font-size: 14px;
+  opacity: 0.4;
+  transform: translateX(-2px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover .cardArrow,
+.card:focus-visible .cardArrow {
+  opacity: 1;
+  transform: translateX(2px);
 }
 
 .cardImage {
@@ -129,6 +163,30 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .cardImage img,
+.card:focus-visible .cardImage img {
+  transform: scale(1.03);
+}
+
+/* Acessibilidade — desativa o movimento para quem prefere menos animação */
+@media (prefers-reduced-motion: reduce) {
+  .cardArrow,
+  .cardImage img {
+    transition: opacity 0.2s ease;
+  }
+
+  .card:hover .cardArrow,
+  .card:focus-visible .cardArrow {
+    transform: none;
+  }
+
+  .card:hover .cardImage img,
+  .card:focus-visible .cardImage img {
+    transform: none;
+  }
 }
 
 .cardDesc {
