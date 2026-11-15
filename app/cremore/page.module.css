@@ -98,6 +98,12 @@
   max-width: 230px;
 }
 
+/* Parágrafo depois de tabela ou par dentro da seção (vence o margin: 0 de .sectionText) */
+.pairTable + .sectionTextAfterTable,
+.pairGrid + .sectionTextAfterTable {
+  margin-top: 20px;
+}
+
 /* ── Case content (continuous text) ──────────────────────── */
 .content {
   display: flex;
@@ -134,11 +140,6 @@
   margin-top: 20px;
 }
 
-/* Seção isolada após a galeria (sem o gap de 64px do .content) */
-.sectionAfterGallery {
-  margin-bottom: 96px;
-}
-
 /* ── Métricas de destaque (Resultado) ──────────────────────
  * Números grandes delimitados por filetes, sem cor nova: o peso
  * visual vem da escala tipográfica, como no resto do site. */
@@ -170,61 +171,44 @@
   margin: 0;
 }
 
-/* ── Processo blocks ── */
-.processBlocks {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  margin-top: 4px;
+/* ── Resumo (problema · o que fiz · resultado) ───────────────
+ * Três colunas curtas logo abaixo do hero, para que um recrutador
+ * tenha a história inteira sem rolar. Mesmo vocabulário da faixa
+ * de meta: rótulo pequeno em caixa alta, texto em 15px. */
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
 }
 
-.processBlock {
-  padding: 24px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-}
-
-.processBlockLabel {
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-  margin-bottom: 10px;
-}
-
-.processBlockText {
-  font-size: 15px;
-  line-height: 1.75;
-  color: var(--text);
-  text-wrap: pretty;
-}
-
-/* ── Faixa de metadados do bloco (método, participantes, objetivo) ──
- * Mesmo vocabulário da faixa de meta do topo da página. */
-.blockMeta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 28px;
-  padding: 0 0 16px;
-  margin: 0 0 16px;
-  border-bottom: 1px solid var(--border);
-}
-
-.metaKey {
+.summaryKey {
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text-secondary);
-  margin: 0 0 4px;
+  margin: 0 0 8px;
 }
 
-.metaValue {
-  font-size: 14px;
-  line-height: 1.4;
+.summaryText {
+  font-size: 15px;
+  line-height: 1.65;
   color: var(--text);
   margin: 0;
+  text-wrap: pretty;
+}
+
+/* Tabela e par logo após um parágrafo de seção */
+.sectionText + .pairTable,
+.sectionText + .pairGrid {
+  margin-top: 20px;
+}
+
+/* Números dentro do Resumo: sem filete inferior duplicado */
+.summaryGrid + .statRow {
+  margin: 32px 0 0;
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 /* ── Par achado → decisão ────────────────────────────────── */
@@ -343,53 +327,6 @@
   border-radius: 50%;
   background: var(--text-secondary);
   opacity: 0.55;
-}
-
-/* Espaçamento entre parágrafos e tabela dentro do bloco */
-.pairTable + .processBlockText {
-  margin-top: 16px;
-}
-
-.processBlockText + .processBlockText {
-  margin-top: 12px;
-}
-
-/* ── Bullets discretos (Resolvi) ── */
-.bulletList {
-  list-style: none;
-  margin: 12px 0 16px;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.bulletList li {
-  position: relative;
-  padding-left: 14px;
-  font-size: 15px;
-  line-height: 1.75;
-  color: var(--text);
-}
-
-.bulletList li::before {
-  content: "";
-  position: absolute;
-  left: 2px;
-  top: 0.85em;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: var(--text-secondary);
-  opacity: 0.55;
-}
-
-/* ── Closing visual gallery ──────────────────────────────── */
-.gallery {
-  display: flex;
-  flex-direction: column;
-  gap: 80px;
-  margin-bottom: 96px;
 }
 
 /* 6-phone grid (2 rows × 3 columns) */
@@ -543,25 +480,11 @@
     max-width: 190px;
   }
 
-  .content {
+.content {
     gap: 56px;
     margin-bottom: 72px;
   }
 
-  .gallery {
-    gap: 64px;
-    margin-bottom: 72px;
-  }
-}
-
-/* ── Variantes desktop / mobile para os prints da galeria ──
- * Renderizamos as 2 versões e alternamos via media query para
- * fazer o swap apenas no breakpoint mobile (<520px). */
-.imgMobileOnly { display: none !important; }
-
-@media (max-width: 520px) {
-  .imgDesktopOnly { display: none !important; }
-  .imgMobileOnly { display: block !important; }
 }
 
 /* ── Mobile ── */
@@ -599,7 +522,7 @@
     max-width: 230px;
   }
 
-  /* Gallery comp: stack phone above browser on mobile */
+/* Gallery comp: stack phone above browser on mobile */
   .galleryComp {
     flex-direction: column;
     align-items: center;
@@ -626,6 +549,12 @@
 
   .statValue {
     font-size: 28px;
+  }
+
+  /* Resumo empilha no mobile */
+  .summaryGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   /* Par achado → decisão empilha no mobile */
@@ -658,12 +587,7 @@
     font-size: 13px;
   }
 
-  .gallery {
-    gap: 40px;
-    margin-bottom: 56px;
-  }
-
-  .phoneGrid {
+.phoneGrid {
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
   }
@@ -676,4 +600,39 @@
     padding: 3px 12px;
     max-width: 70%;
   }
+}
+
+/* ── Composição dentro do carrossel: sem a margem do hero ── */
+.heroComp.slideReset {
+  margin: 0;
+}
+
+/* ── Link externo dentro do texto (mesma linguagem dos gatilhos de modal) ── */
+.inlineLink {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--text-secondary) 45%, transparent);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.inlineLink:hover {
+  text-decoration-color: var(--text-secondary);
+}
+
+.inlineLink span {
+  display: inline;
+  font-size: 0.7em;
+  margin-left: 2px;
+  opacity: 0.45;
+  position: relative;
+  top: -0.4em;
+  transition: opacity 0.15s ease;
+}
+
+.inlineLink:hover span {
+  opacity: 0.85;
 }

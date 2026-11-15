@@ -1,0 +1,129 @@
+/* ── Janela única com setas ──────────────────────────────────
+ * Um slide por vez, deslizando no eixo X. A altura da janela segue o
+ * slide ativo (definida inline pelo componente) com transição suave. */
+.carousel {
+  margin: 0 0 96px;
+}
+
+.viewport {
+  overflow: hidden;
+  transition: height 0.35s ease;
+  /* Respiro para a sombra dos mockups não ser cortada no topo/lados.
+   * content-box: a altura inline (altura do slide ativo) não pode
+   * absorver esse padding, senão a base do print é cortada. */
+  box-sizing: content-box;
+  padding: 4px 4px 28px;
+  margin: -4px -4px -28px;
+}
+
+.viewport:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 6px;
+  border-radius: 14px;
+}
+
+.track {
+  display: flex;
+  align-items: flex-start;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+/* ── Controles (abaixo da janela) ── */
+/* Grid com colunas fixas para as setas: a legenda muda de tamanho entre
+ * slides e as setas não podem sair do lugar. */
+.controls {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) 36px;
+  align-items: center;
+  gap: 16px;
+  width: min(100%, 440px);
+  margin: 28px auto 0;
+}
+
+.arrow {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.15s ease, opacity 0.15s ease;
+}
+
+.arrow:hover:not(:disabled) {
+  border-color: var(--text-secondary);
+}
+
+.arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.arrow:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+.caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  column-gap: 10px;
+  margin: 0;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.captionLabel {
+  color: var(--text);
+}
+
+.captionCount {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .viewport,
+  .track {
+    transition: none;
+  }
+}
+
+/* ── Tablet ── */
+@media (max-width: 768px) {
+  .carousel {
+    margin-bottom: 72px;
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 520px) {
+  .carousel {
+    margin-bottom: 56px;
+  }
+
+  .controls {
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .caption {
+    font-size: 12px;
+  }
+}

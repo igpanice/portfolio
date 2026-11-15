@@ -2,12 +2,24 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "../../cremore/page.module.css";
 import ImageModalTrigger from "../../cremore/ImageModalTrigger";
+import CaseCarousel from "../../cremore/CaseCarousel";
 
 export const metadata = {
   title: "Cremore — Igor Caramori",
   description:
     "B2B landing page built to recruit resellers for a gelato and açaí producer expanding across the region.",
 };
+
+const SITE_URL = "https://cremoregelatos.com.br";
+const FIGMA_URL =
+  "https://www.figma.com/design/Ry0byAqzEAnftHc24rZ8g2/Cremore--Copy-?node-id=1140-2";
+
+const SURVEY_ALT =
+  "Summary of the 23 responses to the questionnaire sent to Cremore resellers through Google Forms";
+const IA_ALT =
+  "Vertical diagram of the Cremore site's information architecture, with Hero, Social proof, Products, Benefits, Process, About us, FAQ, CTA and Footer";
+const UIKIT_ALT =
+  "Cremore site UI kit: colors, typography, spacing, layout, radii and shadows, icons and components";
 
 export default function CremorePageEN() {
   return (
@@ -29,14 +41,14 @@ export default function CremorePageEN() {
         Cremore, a reseller recruitment site.
       </h1>
 
-      {/* ── Meta strip (year · role · live link) ── */}
+      {/* ── Meta strip (year · role · site · figma) ── */}
       <div className={styles.meta}>
         <span>2026</span>
         <span className={styles.metaSep} aria-hidden="true">·</span>
         <span>Product Designer</span>
         <span className={styles.metaSep} aria-hidden="true">·</span>
         <a
-          href="https://cremoregelatos.com.br"
+          href={SITE_URL}
           target="_blank"
           rel="noopener noreferrer"
           className={styles.metaLink}
@@ -44,213 +56,199 @@ export default function CremorePageEN() {
           Visit site
           <span aria-hidden="true">↗</span>
         </a>
+        <span className={styles.metaSep} aria-hidden="true">·</span>
+        <a
+          href={FIGMA_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.metaLink}
+        >
+          Figma
+          <span aria-hidden="true">↗</span>
+        </a>
       </div>
 
-      {/* ── Hero composition (browser + phone overlay) ── */}
-      <div className={styles.heroComp}>
-        <div className={styles.heroBrowser}>
-          <BrowserFrame url="cremoregelatos.com.br">
-            <Image
-              src="/images/cremore/site-desktop-1-hero.png"
-              alt="Cremore desktop site, hero with a preview of the testimonials section"
-              width={1440}
-              height={1100}
-              priority
-            />
-          </BrowserFrame>
-        </div>
-        <div className={styles.heroPhone}>
-          <PhoneFrame>
-            <Image
-              src="/images/cremore/site-mobile-hero.png"
-              alt="Cremore site on mobile"
-              width={390}
-              height={950}
-            />
-          </PhoneFrame>
-        </div>
-      </div>
+      {/* ── Single window with arrows: the 4 site compositions ── */}
+      <CaseCarousel
+        ariaLabel="Cremore site screens"
+        prevLabel="Previous composition"
+        nextLabel="Next composition"
+        labels={[
+          "Hero",
+          "Products, process and benefits on mobile",
+          "Product catalog",
+          "About us and FAQ",
+        ]}
+        slides={[
+          /* 1 — Hero: phone + browser */
+          <div
+            key="hero"
+            className={`${styles.heroComp} ${styles.slideReset}`}
+          >
+            <div className={styles.heroBrowser}>
+              <BrowserFrame url="cremoregelatos.com.br">
+                <Image
+                  src="/images/cremore/site-desktop-1-hero.png"
+                  alt="Cremore desktop site, hero with a preview of the testimonials section"
+                  width={1440}
+                  height={1100}
+                  priority
+                />
+              </BrowserFrame>
+            </div>
+            <div className={styles.heroPhone}>
+              <PhoneFrame>
+                <Image
+                  src="/images/cremore/site-mobile-hero.png"
+                  alt="Cremore site on mobile"
+                  width={390}
+                  height={950}
+                  priority
+                />
+              </PhoneFrame>
+            </div>
+          </div>,
 
-      {/* ── Continuous case text ── */}
+          /* 2 — Three phones */
+          <div key="phones" className={styles.phoneGrid}>
+            <PhoneFrame>
+              <Image
+                src="/images/cremore/site-mobile-produtos.png"
+                alt="Cremore mobile site, products"
+                width={390}
+                height={950}
+                loading="eager"
+              />
+            </PhoneFrame>
+            <PhoneFrame>
+              <Image
+                src="/images/cremore/site-mobile-processo.png"
+                alt="Cremore mobile site, process"
+                width={390}
+                height={950}
+                loading="eager"
+              />
+            </PhoneFrame>
+            <PhoneFrame>
+              <Image
+                src="/images/cremore/site-mobile-beneficios.png"
+                alt="Cremore mobile site, benefits"
+                width={390}
+                height={950}
+                loading="eager"
+              />
+            </PhoneFrame>
+          </div>,
+
+          /* 3 — Products desktop + about us mobile */
+          <div key="products" className={styles.galleryComp}>
+            <BrowserFrame url="cremoregelatos.com.br">
+              <Image
+                src="/images/cremore/site-desktop-2-produtos.png"
+                alt="Cremore site's product catalog"
+                width={1440}
+                height={1043}
+                loading="eager"
+              />
+            </BrowserFrame>
+            <div className={styles.galleryPhone}>
+              <PhoneFrame>
+                <Image
+                  src="/images/cremore/site-mobile-quemsomos.png"
+                  alt="Cremore mobile site, about us"
+                  width={390}
+                  height={950}
+                  loading="eager"
+                />
+              </PhoneFrame>
+            </div>
+          </div>,
+
+          /* 4 — About us desktop + FAQ mobile */
+          <div key="about" className={styles.galleryComp}>
+            <BrowserFrame url="cremoregelatos.com.br">
+              <Image
+                src="/images/cremore/site-desktop-3-quemsomos.png"
+                alt="Cremore site's About us section"
+                width={1440}
+                height={1000}
+                loading="eager"
+              />
+            </BrowserFrame>
+            <div className={styles.galleryPhone}>
+              <PhoneFrame>
+                <Image
+                  src="/images/cremore/site-mobile-faq.png"
+                  alt="Cremore mobile site, FAQ"
+                  width={390}
+                  height={950}
+                  loading="eager"
+                />
+              </PhoneFrame>
+            </div>
+          </div>,
+        ]}
+      />
+
       <div className={styles.content}>
+        {/* ── Summary: problem, what I did, outcome. All on one screen. ── */}
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Context</h2>
-          <p className={styles.sectionText}>
-            Cremore makes gelato, ice cream, açaí and popsicles, and had
-            spent nine years growing without a website that kept up with the
-            business. The old site was generic. It didn&apos;t answer the
-            questions people ask when they are sizing up a supplier, and it
-            didn&apos;t speak to anyone thinking about opening their own shop
-            and looking for the right partner.
-          </p>
-        </section>
-
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Process</h2>
-          <div className={styles.processBlocks}>
-            <div className={styles.processBlock}>
-              <p className={styles.processBlockLabel}>Researched</p>
-              <p className={styles.processBlockText}>
-                To find the initial direction and the opportunities, I used
-                generative research methods.{" "}
+          <h2 className={styles.sectionTitle}>Summary</h2>
+          <div className={styles.summaryGrid}>
+            <div>
+              <p className={styles.summaryKey}>The problem</p>
+              <p className={styles.summaryText}>
+                Cremore, with over nine years in operation and 700 resellers,
+                had no strategic landing page for people looking for a
+                supplier or wanting to open their own business.
+              </p>
+            </div>
+            <div>
+              <p className={styles.summaryKey}>What I did</p>
+              <p className={styles.summaryText}>
                 <ImageModalTrigger
-                  label="Survey"
+                  label="Reseller survey"
                   src="/images/cremore/modals/pesquisa-v2.png"
                   width={1240}
                   height={4160}
-                  alt="Summary of the 23 responses to the questionnaire sent to Cremore resellers through Google Forms"
+                  alt={SURVEY_ALT}
                   modalTitle="Reseller survey"
                   mode="scroll"
                   lang="en"
-                />{" "}
-                of current resellers, a User-Centered Design Canvas with the
-                owners and the sales team, and a competitor analysis online
-                and in shops around my region.
-              </p>
-            </div>
-            <div className={styles.processBlock}>
-              <p className={styles.processBlockLabel}>Designed</p>
-
-              <div className={styles.blockMeta}>
-                <div>
-                  <p className={styles.metaKey}>Approach</p>
-                  <p className={styles.metaValue}>Mobile-first</p>
-                </div>
-                <div>
-                  <p className={styles.metaKey}>Basis for decisions</p>
-                  <p className={styles.metaValue}>Survey + Canvas</p>
-                </div>
-                <div>
-                  <p className={styles.metaKey}>Deliverables</p>
-                  <p className={styles.metaValue}>Architecture, copy and UI kit</p>
-                </div>
-              </div>
-
-              <p className={styles.processBlockText}>
-                I built the site entirely around the ideal reseller, from the{" "}
+                />
+                , interviews with the owners,{" "}
                 <ImageModalTrigger
-                  label="section order"
+                  label="architecture"
                   src="/images/cremore/modals/arquitetura-v2.png"
                   width={361}
                   height={1061}
-                  alt="Vertical diagram of the Cremore site's information architecture, with Hero, Social proof, Products, Benefits, Process, About us, FAQ, CTA and Footer"
+                  alt={IA_ALT}
                   modalTitle="Information architecture"
                   mode="scroll"
                   lang="en"
+                />
+                , copy, on-site photography, image editing and{" "}
+                <ImageModalTrigger
+                  label="UI kit"
+                  src="/images/cremore/modals/ui-kit.webp"
+                  width={1440}
+                  height={5982}
+                  alt={UIKIT_ALT}
+                  modalTitle="UI kit"
+                  mode="scroll"
+                  lang="en"
                 />{" "}
-                to the UI kit. Every decision came out of the survey numbers
-                or the Canvas session with the owners and the sales team:
-              </p>
-
-              <div className={styles.pairTable}>
-                <div className={styles.pairTableHead}>
-                  <span>Evidence</span>
-                  <span>What it became on the site</span>
-                </div>
-                <div className={styles.pairRow}>
-                  <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
-                    Quality and support are what resellers value most
-                  </p>
-                  <p className={styles.pairRowCell}>
-                    Social proof before the catalog
-                  </p>
-                </div>
-                <div className={styles.pairRow}>
-                  <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
-                    82% wanted to see the products
-                  </p>
-                  <p className={styles.pairRowCell}>
-                    Products high on the page
-                  </p>
-                </div>
-                <div className={styles.pairRow}>
-                  <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
-                    36% felt unsure about the process
-                  </p>
-                  <p className={styles.pairRowCell}>
-                    The process broken into steps
-                  </p>
-                </div>
-                <div className={styles.pairRow}>
-                  <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
-                    100% use WhatsApp
-                  </p>
-                  <p className={styles.pairRowCell}>
-                    Every CTA straight to WhatsApp
-                  </p>
-                </div>
-                <div className={styles.pairRow}>
-                  <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
-                    Canvas session with the owners and the sales team
-                  </p>
-                  <div className={styles.pairRowCell}>
-                    <ul className={styles.pairList}>
-                      <li>Brand voice, regional copy and UI kit</li>
-                      <li>FAQ questions</li>
-                      <li>
-                        Real photography: the factory in the Hero, the
-                        products and the shops in About us
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <p className={styles.processBlockText}>
-                This first version is the strongest hypothesis I could ship.
+                for a mobile-first landing page.
               </p>
             </div>
-            <div className={styles.processBlock}>
-              <p className={styles.processBlockLabel}>Validated</p>
-
-              <div className={styles.blockMeta}>
-                <div>
-                  <p className={styles.metaKey}>Method</p>
-                  <p className={styles.metaValue}>Five-second test</p>
-                </div>
-                <div>
-                  <p className={styles.metaKey}>Participants</p>
-                  <p className={styles.metaValue}>4 business owners</p>
-                </div>
-                <div>
-                  <p className={styles.metaKey}>Goal</p>
-                  <p className={styles.metaValue}>Clarity of the offer</p>
-                </div>
-              </div>
-
-              <p className={styles.processBlockText}>
-                A bakery, a delivery restaurant and an online store. With no
-                room for a task-based usability test, I wanted to know what
-                they took away about the purpose of the site, what the
-                company does and Cremore&apos;s value proposition.
+            <div>
+              <p className={styles.summaryKey}>The outcome</p>
+              <p className={styles.summaryText}>
+                9 new resellers across 5 cities in the first 60 days,
+                confirmed with the sales team.
               </p>
-
-              <div className={styles.pairGrid}>
-                <div className={styles.pairCell}>
-                  <p className={styles.pairKey}>What I found</p>
-                  <p className={styles.pairValue}>
-                    Three of the four asked which region Cremore serves. The
-                    answer only existed in the FAQ.
-                  </p>
-                </div>
-                <div className={styles.pairCell}>
-                  <p className={styles.pairKey}>What I changed</p>
-                  <p className={styles.pairValue}>
-                    I added a map of Minas Gerais highlighting Araxá, as a
-                    first iteration.
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
-        </section>
-
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Results</h2>
-          <p className={styles.sectionText}>
-            I arranged a two-month log with the sales team, to find out how
-            many leads came from the site and actually became resellers.
-          </p>
 
           <div className={styles.statRow}>
             <div className={styles.stat}>
@@ -266,156 +264,192 @@ export default function CremorePageEN() {
               <p className={styles.statLabel}>Days tracked</p>
             </div>
           </div>
+        </section>
 
+        {/* ── Investigated ── */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Investigated</h2>
           <p className={styles.sectionText}>
-            I also track conversion, CTR, scroll depth, engagement time and
-            traffic source in Analytics.
+            Through a{" "}
+            <ImageModalTrigger
+              label="reseller survey"
+              src="/images/cremore/modals/pesquisa-v2.png"
+              width={1240}
+              height={4160}
+              alt={SURVEY_ALT}
+              modalTitle="Reseller survey"
+              mode="scroll"
+              lang="en"
+            />
+            , a User-Centered Design Canvas with the owners and the sales
+            team, and competitor analysis online and in the region, I got to
+            the main insights: quality and support are what resellers value
+            most, and every contact happens on WhatsApp.
+          </p>
+        </section>
+
+        {/* ── Solved ── */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Solved</h2>
+          <p className={styles.sectionText}>
+            I designed the entire site by hand around the ideal reseller,
+            from the{" "}
+            <ImageModalTrigger
+              label="section order"
+              src="/images/cremore/modals/arquitetura-v2.png"
+              width={361}
+              height={1061}
+              alt={IA_ALT}
+              modalTitle="Information architecture"
+              mode="scroll"
+              lang="en"
+            />{" "}
+            to the{" "}
+            <ImageModalTrigger
+              label="UI kit"
+              src="/images/cremore/modals/ui-kit.webp"
+              width={1440}
+              height={5982}
+              alt={UIKIT_ALT}
+              modalTitle="UI kit"
+              mode="scroll"
+              lang="en"
+            />
+            . Every decision came from research data:
+          </p>
+
+          <div className={styles.pairTable}>
+            <div className={styles.pairTableHead}>
+              <span>Evidence</span>
+              <span>What it became on the site</span>
+            </div>
+            <div className={styles.pairRow}>
+              <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
+                Quality and support are what resellers value most
+              </p>
+              <p className={styles.pairRowCell}>
+                Social proof before the catalog
+              </p>
+            </div>
+            <div className={styles.pairRow}>
+              <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
+                82% wanted to see the products
+              </p>
+              <p className={styles.pairRowCell}>Products high on the page</p>
+            </div>
+            <div className={styles.pairRow}>
+              <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
+                36% felt unsure about the process
+              </p>
+              <p className={styles.pairRowCell}>
+                The process broken into steps
+              </p>
+            </div>
+            <div className={styles.pairRow}>
+              <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
+                100% use WhatsApp
+              </p>
+              <p className={styles.pairRowCell}>
+                Every CTA straight to WhatsApp
+              </p>
+            </div>
+            <div className={styles.pairRow}>
+              <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
+                Canvas session with the owners and the sales team
+              </p>
+              <div className={styles.pairRowCell}>
+                <ul className={styles.pairList}>
+                  <li>Brand voice, regional copy and UI kit</li>
+                  <li>FAQ questions</li>
+                  <li>
+                    Real photography: the factory in the Hero, the products
+                    and the shops in About us
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <p className={`${styles.sectionText} ${styles.sectionTextAfterTable}`}>
+            I delivered the{" "}
+            <a
+              href={FIGMA_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.inlineLink}
+            >
+              Figma
+              <span aria-hidden="true">↗</span>
+            </a>{" "}
+            ready for handoff. Only the implementation and the deploy were
+            done with Claude Code, following good practices such as{" "}
+            <ImageModalTrigger
+              label="Lighthouse"
+              src="/images/cremore/modals/lighthouse.png"
+              width={705}
+              height={573}
+              alt="Lighthouse report for the Cremore site"
+              modalTitle="Lighthouse"
+              mode="static"
+              lang="en"
+            />
+            , SEO, semantic hierarchy and GA4 tracking.
+          </p>
+        </section>
+
+        {/* ── Validated ── */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Validated</h2>
+          <p className={styles.sectionText}>
+            With no room for a usability test, I ran a five-second test with
+            four business owners, from two bakeries, a delivery restaurant
+            and an online store, to see what they took away from the offer.
+          </p>
+
+          <div className={styles.pairGrid}>
+            <div className={styles.pairCell}>
+              <p className={styles.pairKey}>What I found</p>
+              <p className={styles.pairValue}>
+                Three of the four asked which region Cremore serves. The
+                answer only existed in the FAQ.
+              </p>
+            </div>
+            <div className={styles.pairCell}>
+              <p className={styles.pairKey}>What I changed</p>
+              <p className={styles.pairValue}>
+                I added a map of Minas Gerais highlighting Araxá, as a first
+                iteration.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Limits ── */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Limits</h2>
+          <p className={styles.sectionText}>
+            Small samples: 23 of 700 resellers in the survey, four people in
+            the test, and possible bias in the Canvas session.
+          </p>
+        </section>
+
+        {/* ── Also at Cremore: internal research, no publishable evidence ── */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Also at Cremore</h2>
+          <p className={styles.sectionText}>
+            Beyond the site, Cremore hired me for three internal research
+            projects, not publishable: franchise network feasibility, with a
+            field study and a reseller survey; demand for an ordering app,
+            with interviews and an ethnographic study at the point of sale;
+            and data analysis to pick new factory-outlet locations in two
+            cities.
           </p>
         </section>
       </div>
 
-      {/* ── Closing visual gallery ── */}
-      <div className={styles.gallery}>
-
-        {/* Row of 3 mobiles.
-         * Desktop: products, process, benefits.
-         * Mobile: process, about us, faq (rearranged to spotlight products/benefits in the larger slots). */}
-        <div className={styles.phoneGrid}>
-          <PhoneFrame>
-            <Image
-              className={styles.imgDesktopOnly}
-              src="/images/cremore/site-mobile-produtos.png"
-              alt="Cremore mobile site, products"
-              width={390}
-              height={950}
-            />
-            <Image
-              className={styles.imgMobileOnly}
-              src="/images/cremore/site-mobile-processo.png"
-              alt="Cremore mobile site, process"
-              width={390}
-              height={950}
-            />
-          </PhoneFrame>
-          <PhoneFrame>
-            <Image
-              className={styles.imgDesktopOnly}
-              src="/images/cremore/site-mobile-processo.png"
-              alt="Cremore mobile site, process"
-              width={390}
-              height={950}
-            />
-            <Image
-              className={styles.imgMobileOnly}
-              src="/images/cremore/site-mobile-quemsomos.png"
-              alt="Cremore mobile site, about us"
-              width={390}
-              height={950}
-            />
-          </PhoneFrame>
-          <PhoneFrame>
-            <Image
-              className={styles.imgDesktopOnly}
-              src="/images/cremore/site-mobile-beneficios.png"
-              alt="Cremore mobile site, benefits"
-              width={390}
-              height={950}
-            />
-            <Image
-              className={styles.imgMobileOnly}
-              src="/images/cremore/site-mobile-faq.png"
-              alt="Cremore mobile site, FAQ"
-              width={390}
-              height={950}
-            />
-          </PhoneFrame>
-        </div>
-
-        {/* D2 — Products desktop with about-us overlay (5) */}
-        <div className={styles.galleryComp}>
-          <BrowserFrame url="cremoregelatos.com.br">
-            <Image
-              src="/images/cremore/site-desktop-2-produtos.png"
-              alt="Cremore site's product catalog"
-              width={1440}
-              height={1043}
-            />
-          </BrowserFrame>
-          <div className={styles.galleryPhone}>
-            <PhoneFrame>
-              <Image
-                className={styles.imgDesktopOnly}
-                src="/images/cremore/site-mobile-quemsomos.png"
-                alt="Cremore mobile site, about us"
-                width={390}
-                height={950}
-              />
-              <Image
-                className={styles.imgMobileOnly}
-                src="/images/cremore/site-mobile-produtos.png"
-                alt="Cremore mobile site, products"
-                width={390}
-                height={950}
-              />
-            </PhoneFrame>
-          </div>
-        </div>
-
-        {/* D3 — About us desktop with FAQ overlay (6) */}
-        <div className={styles.galleryComp}>
-          <BrowserFrame url="cremoregelatos.com.br">
-            <Image
-              src="/images/cremore/site-desktop-3-quemsomos.png"
-              alt="Cremore site's About us section"
-              width={1440}
-              height={1000}
-            />
-          </BrowserFrame>
-          <div className={styles.galleryPhone}>
-            <PhoneFrame>
-              <Image
-                className={styles.imgDesktopOnly}
-                src="/images/cremore/site-mobile-faq.png"
-                alt="Cremore mobile site, FAQ"
-                width={390}
-                height={950}
-              />
-              <Image
-                className={styles.imgMobileOnly}
-                src="/images/cremore/site-mobile-beneficios.png"
-                alt="Cremore mobile site, benefits"
-                width={390}
-                height={950}
-              />
-            </PhoneFrame>
-          </div>
-        </div>
-
-      </div>
-
-      {/* ── Calculated risks (after the final mockups) ── */}
-      <section className={`${styles.section} ${styles.sectionAfterGallery}`}>
-        <h2 className={styles.sectionTitle}>Calculated risks</h2>
-        <p className={styles.sectionText}>
-          I backed the survey&apos;s conclusions despite a small sample, 23
-          of 700 resellers. I offset that by cross-checking the data against
-          the User-Centered Design Canvas with the owners and the sales team,
-          and against the competitor analysis in Franca.
-        </p>
-        <p className={styles.sectionText}>
-          The five-second test also ran on a small sample, four people. That
-          signal is enough to steer a first iteration, not to confirm a
-          behavior pattern.
-        </p>
-        <p className={styles.sectionText}>
-          With no room for a larger usability test, reading what happens on
-          the site depends on Analytics and on feedback from the sales team.
-        </p>
-      </section>
-
       {/* ── External link ── */}
       <a
-        href="https://cremoregelatos.com.br"
+        href={SITE_URL}
         target="_blank"
         rel="noopener noreferrer"
         className={styles.externalLink}
