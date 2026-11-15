@@ -11,15 +11,10 @@ export default function Home() {
           <h1 className={styles.name}>Igor Caramori</h1>
 
           <p className={styles.bio}>
-            Crio experiências digitais que ajudam empresas a se conectarem
-            melhor com seus usuários, sem desperdiçar recursos nem tomar
-            decisões que não sejam baseadas em dados.
-          </p>
-          <p className={styles.bio}>
-            Product Designer focado em produto digital desde 2025. Conduzo
-            discovery e pesquisa com usuários, desenho fluxos e interfaces no
-            Figma, valido em testes de usabilidade e acompanho a
-            implementação, com métricas definidas para medir o resultado.
+            Product Designer focado em produto digital desde 2024. Conduzo
+            discovery e pesquisa com usuários, desenho fluxos e interfaces,
+            valido em testes de usabilidade e acompanho a implementação, com
+            métricas definidas para medir o resultado.
           </p>
 
           <nav className={styles.links} aria-label="Contato">

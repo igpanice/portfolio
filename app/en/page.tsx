@@ -17,13 +17,8 @@ export default function HomeEN() {
           <h1 className={styles.name}>Igor Caramori</h1>
 
           <p className={styles.bio}>
-            I design digital experiences that help companies connect with
-            their users, without burning resources or making calls that
-            aren&apos;t backed by data.
-          </p>
-          <p className={styles.bio}>
-            Product Designer focused on digital product since 2025. I run
-            discovery and user research, design flows and interfaces in Figma,
+            Product Designer focused on digital product since 2024. I run
+            discovery and user research, design flows and interfaces,
             validate them in usability testing and follow the implementation
             through, with success metrics defined to measure the outcome.
           </p>
