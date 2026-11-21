@@ -371,7 +371,7 @@ export default function CremorePage() {
               <span aria-hidden="true">↗</span>
             </a>{" "}
             pronto para handoff. Somente a implementação e a publicação foram
-            feitas com Claude Code, seguindo boas práticas como{" "}
+            feitas com Claude Code, com SEO,{" "}
             <ImageModalTrigger
               label="Lighthouse"
               src="/images/cremore/modals/lighthouse.png"
@@ -381,7 +381,8 @@ export default function CremorePage() {
               modalTitle="Lighthouse"
               mode="static"
             />
-            , SEO, hierarquia semântica e acompanhamento no GA4.
+{" "}
+            e acompanhamento no GA4.
           </p>
         </section>
 
