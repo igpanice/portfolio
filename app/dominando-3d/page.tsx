@@ -18,6 +18,34 @@ const FIGMA_URL =
 
 const IMG = "/images/dominando-3d";
 
+/* Tabela de Resolvi: evidência curta → decisão curta, como na Cremore */
+const TABLE: [string, string][] = [
+  [
+    "Benchmark · único curso com professor ao vivo",
+    "Aulas online ao vivo no hero e no CTA final",
+  ],
+  [
+    "Canvas · iniciantes, renda extra e especialização",
+    "“Para quem é” com três perfis",
+  ],
+  [
+    "Canvas · problemas de configuração, qualidade e filamento",
+    "“O que você vai aprender” escrito como resultado",
+  ],
+  [
+    "Canvas · medo de não aprender e falta de aulas gravadas",
+    "Conversa prévia sobre o nível e aulas gravadas",
+  ],
+  [
+    "Benchmark · prova social reduz o risco da compra",
+    "Depoimentos reais e bio do professor",
+  ],
+  [
+    "Reunião · o WhatsApp é o canal com os alunos",
+    "Todos os CTAs no WhatsApp",
+  ],
+];
+
 /* Pares de seções na ordem da arquitetura da informação. Alturas em px
  * CSS das capturas (1440 no desktop, 390 no mobile). */
 const SLIDES = [
@@ -206,10 +234,9 @@ export default function Dominando3DPage() {
             <div>
               <p className={styles.summaryKey}>O resultado</p>
               <p className={styles.summaryText}>
-                Site no ar desde 18 de novembro de 2026, ainda sem tráfego
-                pago. Quando ele começar, vou medir no GA4 a rolagem e os
-                cliques em cada CTA, e, com o cliente, quantos leads viraram
-                alunos.
+                No ar desde 18 de novembro de 2026, ainda sem tráfego pago.
+                Vou medir no GA4 a rolagem e os cliques por CTA, e com o
+                cliente, quantos leads viram alunos.
               </p>
             </div>
           </div>
@@ -254,73 +281,14 @@ export default function Dominando3DPage() {
               <span>Evidência</span>
               <span>O que virou no site</span>
             </div>
-            <div className={styles.pairRow}>
-              <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
-                Canvas · preparar qualquer usuário para usar a impressora no
-                máximo, com poucas aulas
-              </p>
-              <p className={styles.pairRowCell}>
-                Hero com a promessa e o formato, aulas online ao vivo e
-                suporte no WhatsApp
-              </p>
-            </div>
-            <div className={styles.pairRow}>
-              <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
-                Canvas · primeira impressora, renda extra e especialização
-              </p>
-              <p className={styles.pairRowCell}>
-                &ldquo;Para quem é&rdquo; com três perfis
-              </p>
-            </div>
-            <div className={styles.pairRow}>
-              <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
-                Canvas · não consegue regular a impressora, nem atingir
-                qualidade, nem escolher o filamento
-              </p>
-              <p className={styles.pairRowCell}>
-                &ldquo;O que você vai aprender&rdquo; escrito como resultado
-              </p>
-            </div>
-            <div className={styles.pairRow}>
-              <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
-                Canvas · o curso não tinha aulas gravadas, e o maior medo era
-                não aprender
-              </p>
-              <p className={styles.pairRowCell}>
-                Conversa prévia para conhecer o nível do aluno e gravação de
-                todas as aulas
-              </p>
-            </div>
-            <div className={styles.pairRow}>
-              <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
-                Desk research e benchmark · os concorrentes reduzem o risco da
-                compra com prova social e autoridade
-              </p>
-              <div className={styles.pairRowCell}>
-                <ul className={styles.pairList}>
-                  <li>Depoimentos reais, pedidos pelo cliente aos alunos</li>
-                  <li>Bio do professor com a experiência dele em projeto e impressão 3D</li>
-                </ul>
+            {TABLE.map(([evidence, decision]) => (
+              <div key={evidence} className={styles.pairRow}>
+                <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
+                  {evidence}
+                </p>
+                <p className={styles.pairRowCell}>{decision}</p>
               </div>
-            </div>
-            <div className={styles.pairRow}>
-              <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
-                Reunião com o cliente · preço baixo desde o lançamento,
-                confirmado como o menor entre os pagos no benchmark
-              </p>
-              <p className={styles.pairRowCell}>
-                Preço visível no card de investimento
-              </p>
-            </div>
-            <div className={styles.pairRow}>
-              <p className={`${styles.pairRowCell} ${styles.pairEvidence}`}>
-                Reunião com o cliente · o WhatsApp sempre foi o canal com os
-                alunos
-              </p>
-              <p className={styles.pairRowCell}>
-                Todos os CTAs direto no WhatsApp
-              </p>
-            </div>
+            ))}
           </div>
 
           <p className={`${styles.sectionText} ${styles.sectionTextAfterTable}`}>
@@ -365,9 +333,9 @@ export default function Dominando3DPage() {
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Limites</h2>
           <p className={styles.sectionText}>
-            Sem teste com usuários antes do lançamento. O benchmark compara a
-            oferta comunicada em páginas públicas, não a qualidade das aulas,
-            e o Canvas reúne a visão do cliente, não a dos alunos.
+            Sem teste com usuários antes do lançamento. O Canvas reúne a visão
+            do cliente, não a dos alunos, e o benchmark compara só as
+            propostas, não as aulas.
           </p>
         </section>
       </div>
