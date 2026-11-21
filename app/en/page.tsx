@@ -76,8 +76,8 @@ export default function HomeEN() {
             </p>
             <div className={styles.cardImage}>
               <Image
-                src="/images/cremore/hero.webp"
-                alt="Cremore Gelateria — website hero"
+                src="/images/cremore/card.webp"
+                alt="Cremore website on desktop and mobile"
                 width={1200}
                 height={675}
               />

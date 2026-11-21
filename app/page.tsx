@@ -70,8 +70,8 @@ export default function Home() {
             </p>
             <div className={styles.cardImage}>
               <Image
-                src="/images/cremore/hero.webp"
-                alt="Cremore Gelateria — hero do site"
+                src="/images/cremore/card.webp"
+                alt="Site da Cremore no desktop e no mobile"
                 width={1200}
                 height={675}
               />
@@ -79,6 +79,27 @@ export default function Home() {
             <p className={styles.cardDesc}>
               Landing page B2B para captação de revendedores de uma fábrica
               de gelatos, açaís e picolés em plena expansão regional.
+            </p>
+          </Link>
+
+          {/* Card · Dominando o 3D */}
+          <Link href="/dominando-3d" className={styles.card}>
+            <p className={styles.cardTitle}>
+              Dominando o 3D
+              <span className={styles.cardArrow} aria-hidden="true">→</span>
+            </p>
+            <div className={styles.cardImage}>
+              <Image
+                src="/images/dominando-3d/card.webp"
+                alt="Site do Dominando o 3D no desktop e no mobile"
+                width={1200}
+                height={675}
+              />
+            </div>
+            <p className={styles.cardDesc}>
+              Landing page de um curso online de impressão 3D, criada do zero
+              a partir de pesquisa e benchmark, pronta para receber tráfego
+              pago.
             </p>
           </Link>
         </div>

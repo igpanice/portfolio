@@ -1,0 +1,62 @@
+/* ── Celular de altura fixa com rolagem interna ─────────────────
+ * Os prints mobile do Dominando o 3D cobrem duas seções e ficam bem
+ * mais altos que o desktop. Em vez de deixar o carrossel crescer, o
+ * celular tem a proporção de um aparelho (um pouco mais alto que o
+ * desktop em todos os slides) e as seções rolam dentro da tela. */
+
+.phoneCol {
+  width: 36%;
+  max-width: 260px;
+}
+
+.phoneViewport {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Barra de rolagem nativa fina, com as setas do sistema: reforça que a
+ * tela do celular rola. */
+.phoneScroll {
+  aspect-ratio: 390 / 900;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.25) transparent;
+}
+
+/* Esmaecido no pé da tela: indica que há mais conteúdo para rolar */
+.phoneViewport::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.14), transparent);
+  pointer-events: none;
+}
+
+/* Tablet: mesma lógica, coluna um pouco mais estreita */
+@media (max-width: 768px) {
+  .phoneCol {
+    width: 38%;
+    max-width: 220px;
+  }
+}
+
+/* Mobile: celular empilhado, sem rolagem interna para não disputar com
+ * o gesto de passar slide. Mostra só o topo das seções. */
+@media (max-width: 520px) {
+  .phoneCol {
+    width: 66%;
+    max-width: 230px;
+  }
+
+  /* Mais baixo que no desktop: celular + navegador empilhados cabem
+   * numa tela de celular, com as setas visíveis. */
+  .phoneScroll {
+    aspect-ratio: 390 / 640;
+    overflow-y: hidden;
+  }
+}
