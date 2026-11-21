@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 import styles from "../cremore/page.module.css";
 import local from "./page.module.css";
 
@@ -10,6 +10,9 @@ type Props = {
   /** Faz a "dica de rolagem": desce um pouco e volta, uma única vez,
    * quando o celular entra na tela. Usado só no primeiro slide. */
   hint?: boolean;
+  /** Proporção fixa da tela (ex.: "390 / 950"), igual em todos os
+   * breakpoints. Sem ela, vale a do Dominando: 390/900 e 390/640 no mobile. */
+  ratio?: string;
 };
 
 const HINT_DISTANCE = 140; /* px descidos na dica */
@@ -23,7 +26,7 @@ const easeInOut = (t: number) =>
 
 /* Celular com a proporção de um aparelho e rolagem interna: as duas
  * seções do print ficam inteiras sem esticar o carrossel. */
-export default function PhoneScrollFrame({ children, label, hint }: Props) {
+export default function PhoneScrollFrame({ children, label, hint, ratio }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -95,6 +98,14 @@ export default function PhoneScrollFrame({ children, label, hint }: Props) {
           tabIndex={0}
           role="region"
           aria-label={label}
+          style={
+            ratio
+              ? ({
+                  "--phone-ratio": ratio,
+                  "--phone-ratio-sm": ratio,
+                } as CSSProperties)
+              : undefined
+          }
         >
           {children}
         </div>

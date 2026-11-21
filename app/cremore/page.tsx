@@ -3,6 +3,11 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import ImageModalTrigger from "./ImageModalTrigger";
 import CaseCarousel from "./CaseCarousel";
+import PhoneScrollFrame from "../dominando-3d/PhoneScrollFrame";
+
+/* Mesma proporção dos prints mobile estáticos (390×950): os celulares com
+ * rolagem ficam do mesmo tamanho dos outros. */
+const PHONE_RATIO = "390 / 950";
 
 export const metadata = {
   title: "Cremore — Igor Caramori",
@@ -90,29 +95,36 @@ export default function CremorePage() {
               </BrowserFrame>
             </div>
             <div className={styles.heroPhone}>
-              <PhoneFrame>
+              <PhoneScrollFrame
+                label="Role para ver o hero e os depoimentos no mobile"
+                ratio={PHONE_RATIO}
+                hint
+              >
                 <Image
-                  src="/images/cremore/site-mobile-hero.png"
-                  alt="Site Cremore no mobile"
+                  src="/images/cremore/site-mobile-hero-depoimentos.png"
+                  alt="Site Cremore no mobile, do hero ao fim dos depoimentos"
                   width={390}
-                  height={950}
+                  height={1216}
                   priority
                 />
-              </PhoneFrame>
+              </PhoneScrollFrame>
             </div>
           </div>,
 
           /* 2 — Três celulares */
           <div key="phones" className={styles.phoneGrid}>
-            <PhoneFrame>
+            <PhoneScrollFrame
+              label="Role para ver todos os produtos no mobile"
+              ratio={PHONE_RATIO}
+            >
               <Image
-                src="/images/cremore/site-mobile-produtos.png"
-                alt="Site Cremore mobile, produtos"
+                src="/images/cremore/site-mobile-produtos-completo.png"
+                alt="Site Cremore mobile, seção de produtos completa"
                 width={390}
-                height={950}
+                height={1750}
                 loading="eager"
               />
-            </PhoneFrame>
+            </PhoneScrollFrame>
             <PhoneFrame>
               <Image
                 src="/images/cremore/site-mobile-processo.png"
@@ -422,15 +434,16 @@ export default function CremorePage() {
               <p className={styles.pairKey}>O que os dados mostraram</p>
               <p className={styles.pairValue}>
                 97% das visitas vieram do celular, e dois terços das pessoas
-                não passaram do primeiro trecho da página. Dos 2.446
+                não chegaram ao fim da seção de produtos. Dos 2.446
                 visitantes, 274 chamaram no WhatsApp, 11% do total.
               </p>
             </div>
             <div className={styles.pairCell}>
               <p className={styles.pairKey}>O que isso confirma</p>
               <p className={styles.pairValue}>
-                O desenho mobile-first e a ordem das seções, com depoimentos e
-                produtos logo no começo, onde a decisão acontece.
+                Desenhar para o celular e colocar depoimentos e produtos logo
+                no começo foi a escolha certa, porque é até ali que a maioria
+                das pessoas chega.
               </p>
             </div>
           </div>

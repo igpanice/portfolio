@@ -91,11 +91,12 @@
   min-width: 0;
 }
 
+/* Mesma largura dos celulares do Dominando o 3D (.phoneCol) */
 .heroPhone {
   order: -1;
   flex: 0 0 auto;
-  width: 32%;
-  max-width: 230px;
+  width: 36%;
+  max-width: 260px;
 }
 
 /* Parágrafo depois de tabela ou par dentro da seção (vence o margin: 0 de .sectionText) */
@@ -329,12 +330,13 @@
   opacity: 0.55;
 }
 
-/* 6-phone grid (2 rows × 3 columns) */
+/* Três celulares lado a lado. Teto de 3 × 260px + 2 gaps; no slide de
+ * 800px cada celular fica com ~251px, o mais perto de 260 que cabe. */
 .phoneGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  max-width: 720px;
+  max-width: 828px;
   margin: 0 auto;
 }
 
@@ -355,8 +357,8 @@
 .galleryPhone {
   order: -1;
   flex: 0 0 auto;
-  width: 32%;
-  max-width: 230px;
+  width: 36%;
+  max-width: 260px;
 }
 
 /* ── Browser frame mockup (Safari 18, monocromático) ────── */
@@ -471,13 +473,13 @@
   }
 
   .heroPhone {
-    width: 34%;
-    max-width: 190px;
+    width: 38%;
+    max-width: 220px;
   }
 
   .galleryPhone {
-    width: 34%;
-    max-width: 190px;
+    width: 38%;
+    max-width: 220px;
   }
 
 .content {

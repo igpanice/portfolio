@@ -3,6 +3,11 @@ import Image from "next/image";
 import styles from "../../cremore/page.module.css";
 import ImageModalTrigger from "../../cremore/ImageModalTrigger";
 import CaseCarousel from "../../cremore/CaseCarousel";
+import PhoneScrollFrame from "../../dominando-3d/PhoneScrollFrame";
+
+/* Same ratio as the static mobile prints (390×950), so the scrolling
+ * phones match the others in size. */
+const PHONE_RATIO = "390 / 950";
 
 export const metadata = {
   title: "Cremore — Igor Caramori",
@@ -97,29 +102,36 @@ export default function CremorePageEN() {
               </BrowserFrame>
             </div>
             <div className={styles.heroPhone}>
-              <PhoneFrame>
+              <PhoneScrollFrame
+                label="Scroll to see the hero and testimonials on mobile"
+                ratio={PHONE_RATIO}
+                hint
+              >
                 <Image
-                  src="/images/cremore/site-mobile-hero.png"
-                  alt="Cremore site on mobile"
+                  src="/images/cremore/site-mobile-hero-depoimentos.png"
+                  alt="Cremore site on mobile, from the hero to the end of the testimonials"
                   width={390}
-                  height={950}
+                  height={1216}
                   priority
                 />
-              </PhoneFrame>
+              </PhoneScrollFrame>
             </div>
           </div>,
 
           /* 2 — Three phones */
           <div key="phones" className={styles.phoneGrid}>
-            <PhoneFrame>
+            <PhoneScrollFrame
+              label="Scroll to see all products on mobile"
+              ratio={PHONE_RATIO}
+            >
               <Image
-                src="/images/cremore/site-mobile-produtos.png"
-                alt="Cremore mobile site, products"
+                src="/images/cremore/site-mobile-produtos-completo.png"
+                alt="Cremore mobile site, full products section"
                 width={390}
-                height={950}
+                height={1750}
                 loading="eager"
               />
-            </PhoneFrame>
+            </PhoneScrollFrame>
             <PhoneFrame>
               <Image
                 src="/images/cremore/site-mobile-processo.png"
@@ -434,16 +446,16 @@ export default function CremorePageEN() {
               <p className={styles.pairKey}>What the data showed</p>
               <p className={styles.pairValue}>
                 97% of visits came from mobile, and two thirds of people never
-                went past the first stretch of the page. Of 2,446 visitors, 274
+                reached the end of the products section. Of 2,446 visitors, 274
                 reached out on WhatsApp, 11% of the total.
               </p>
             </div>
             <div className={styles.pairCell}>
               <p className={styles.pairKey}>What it confirms</p>
               <p className={styles.pairValue}>
-                The mobile-first design and the section order, with
-                testimonials and products right at the top, where the decision
-                happens.
+                Designing for mobile and putting testimonials and products
+                right at the top was the right call, because that&apos;s as far
+                as most people get.
               </p>
             </div>
           </div>

@@ -18,7 +18,7 @@
 /* Barra de rolagem nativa fina, com as setas do sistema: reforça que a
  * tela do celular rola. */
 .phoneScroll {
-  aspect-ratio: 390 / 900;
+  aspect-ratio: var(--phone-ratio, 390 / 900);
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: thin;
@@ -56,7 +56,7 @@
   /* Mais baixo que no desktop: celular + navegador empilhados cabem
    * numa tela de celular, com as setas visíveis. */
   .phoneScroll {
-    aspect-ratio: 390 / 640;
+    aspect-ratio: var(--phone-ratio-sm, 390 / 640);
     overflow-y: hidden;
   }
 }
