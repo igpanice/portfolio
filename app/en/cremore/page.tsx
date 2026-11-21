@@ -244,7 +244,7 @@ export default function CremorePageEN() {
             <div>
               <p className={styles.summaryKey}>The outcome</p>
               <p className={styles.summaryText}>
-                9 new resellers across 5 cities in the first 60 days,
+                12 new resellers across 5 cities in the first 60 days,
                 confirmed with the sales team.
               </p>
             </div>
@@ -252,7 +252,7 @@ export default function CremorePageEN() {
 
           <div className={styles.statRow}>
             <div className={styles.stat}>
-              <p className={styles.statValue}>9</p>
+              <p className={styles.statValue}>12</p>
               <p className={styles.statLabel}>New resellers</p>
             </div>
             <div className={styles.stat}>
@@ -260,8 +260,8 @@ export default function CremorePageEN() {
               <p className={styles.statLabel}>Cities reached</p>
             </div>
             <div className={styles.stat}>
-              <p className={styles.statValue}>60</p>
-              <p className={styles.statLabel}>Days tracked</p>
+              <p className={styles.statValue}>11%</p>
+              <p className={styles.statLabel}>Reached out on WhatsApp</p>
             </div>
           </div>
         </section>
@@ -315,7 +315,9 @@ export default function CremorePageEN() {
               mode="scroll"
               lang="en"
             />
-            . Every decision came from research data:
+            , which turned the logo and the colors already used in the store
+            interiors into a reusable visual system for digital. Every
+            decision came from research data.
           </p>
 
           <div className={styles.pairTable}>
@@ -419,6 +421,29 @@ export default function CremorePageEN() {
               <p className={styles.pairValue}>
                 I added a map of Minas Gerais highlighting Araxá, as a first
                 iteration.
+              </p>
+            </div>
+          </div>
+
+          <p className={`${styles.sectionText} ${styles.sectionTextAfterTable}`}>
+            After launch, GA4 tracked 60 days of Google Ads.
+          </p>
+
+          <div className={styles.pairGrid}>
+            <div className={styles.pairCell}>
+              <p className={styles.pairKey}>What the data showed</p>
+              <p className={styles.pairValue}>
+                97% of visits came from mobile, and two thirds of people never
+                went past the first stretch of the page. Of 2,446 visitors, 274
+                reached out on WhatsApp, 11% of the total.
+              </p>
+            </div>
+            <div className={styles.pairCell}>
+              <p className={styles.pairKey}>What it confirms</p>
+              <p className={styles.pairValue}>
+                The mobile-first design and the section order, with
+                testimonials and products right at the top, where the decision
+                happens.
               </p>
             </div>
           </div>
